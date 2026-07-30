@@ -73,7 +73,17 @@ jobs:
             -e "s|^CT_BINUTILS_ESP32P4_BIN_WRAPPERS_LOCATION=.*|CT_BINUTILS_ESP32P4_BIN_WRAPPERS_LOCATION=\"${GITHUB_WORKSPACE}/esp-toolchain-bin-wrappers/gnu-riscv-binutils\"|" \
             s31linux/configs/riscv32-esp-linux-musl.config > s31-linux.config
           ./ct-ng defconfig DEFCONFIG="${GITHUB_WORKSPACE}/s31-linux.config"
-          sed -i -e 's/^CT_LOG_PROGRESS_BAR=y/# CT_LOG_PROGRESS_BAR is not set/' .config
+          sed -i \
+            -e 's/^CT_LOG_PROGRESS_BAR=y/# CT_LOG_PROGRESS_BAR is not set/' \
+            -e "s|^CT_LOCAL_TARBALLS_DIR=.*|CT_LOCAL_TARBALLS_DIR=\"${GITHUB_WORKSPACE}/src\"|" \
+            .config
+
+      - name: Seed musl release tarball
+        run: |
+          mkdir -p "${GITHUB_WORKSPACE}/src"
+          wget --tries=5 --timeout=30 \
+            https://sources.buildroot.net/musl/musl-1.2.5.tar.gz \
+            -O "${GITHUB_WORKSPACE}/src/musl-1.2.5.tar.gz"
 
       - name: Build ESP32-S31 Linux toolchain
         run: ./ct-ng build."$(nproc)"
