@@ -102,6 +102,7 @@ jobs:
           libc="${prefix}/${target}/sysroot/usr/lib/libc.so"
 
           "${gcc}" --version | tee toolchain-version.txt
+          ! grep -q 'crosstool-NG UNKNOWN' toolchain-version.txt
           "${readelf}" -A "${libc}" | tee libc-attributes.txt
           rg_arch=$(sed -n 's/.*Tag_RISCV_arch: "\([^"]*\)".*/\1/p' libc-attributes.txt)
           for extension in _f _zaamo _zalrsc _zba _zbb _zbc _zbs _xesploop _xespv2p2; do
@@ -136,6 +137,7 @@ jobs:
           cd artifact
           sha256sum riscv32-esp-linux-musl.tar.xz \
             > riscv32-esp-linux-musl.tar.xz.sha256
+          sha256sum --check riscv32-esp-linux-musl.tar.xz.sha256
 
       - name: Upload ESP32-S31 Linux toolchain
         uses: actions/upload-artifact@v4
