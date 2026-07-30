@@ -124,10 +124,13 @@ jobs:
       - name: Package toolchain
         run: |
           prefix="${GITHUB_WORKSPACE}/x-tools/riscv32-esp-linux-musl"
-          cp .config "${prefix}/crosstool-ng.config"
-          cp toolchain-version.txt libc-attributes.txt f-only-test.s "${prefix}/"
+          mkdir -p package-metadata
+          cp .config package-metadata/crosstool-ng.config
+          cp toolchain-version.txt libc-attributes.txt f-only-test.s package-metadata/
           mkdir -p artifact
-          tar -C "${prefix}" -cJf artifact/riscv32-esp-linux-musl.tar.xz .
+          tar -cJf artifact/riscv32-esp-linux-musl.tar.xz \
+            -C "${prefix}" . \
+            -C "${GITHUB_WORKSPACE}/package-metadata" .
           sha256sum artifact/riscv32-esp-linux-musl.tar.xz \
             > artifact/riscv32-esp-linux-musl.tar.xz.sha256
 
