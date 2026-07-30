@@ -28,8 +28,13 @@ jobs:
     steps:
       - name: Check out crosstool-NG
         uses: actions/checkout@v4
+
+      - name: Check out Espressif binutils wrappers
+        uses: actions/checkout@v4
         with:
-          submodules: recursive
+          repository: espressif/esp-toolchain-bin-wrappers
+          ref: d8844fa7d904aefcb9484ff3a37f4f5c476321f6
+          path: esp-toolchain-bin-wrappers
 
       - name: Check out ESP32-S31 Linux configuration
         uses: actions/checkout@v4
