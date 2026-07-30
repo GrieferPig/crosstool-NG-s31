@@ -131,8 +131,9 @@ jobs:
           tar -cJf artifact/riscv32-esp-linux-musl.tar.xz \
             -C "${prefix}" . \
             -C "${GITHUB_WORKSPACE}/package-metadata" .
-          sha256sum artifact/riscv32-esp-linux-musl.tar.xz \
-            > artifact/riscv32-esp-linux-musl.tar.xz.sha256
+          cd artifact
+          sha256sum riscv32-esp-linux-musl.tar.xz \
+            > riscv32-esp-linux-musl.tar.xz.sha256
 
       - name: Upload ESP32-S31 Linux toolchain
         uses: actions/upload-artifact@v4
