@@ -1,0 +1,141 @@
+name: Build ESP32-S31 Linux toolchain
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - esp-1.28.x
+    paths:
+      - .github/workflows/build-s31-linux-toolchain.yml
+      - packages/**
+      - scripts/**
+      - config/**
+      - Makefile.in
+      - configure.ac
+
+permissions:
+  contents: read
+
+concurrency:
+  group: s31-linux-toolchain-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 120
+
+    steps:
+      - name: Check out crosstool-NG
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Check out ESP32-S31 Linux configuration
+        uses: actions/checkout@v4
+        with:
+          repository: GrieferPig/esp32-s31-linux
+          ref: main
+          path: s31linux
+
+      - name: Check out ESP32-S31 Linux kernel
+        uses: actions/checkout@v4
+        with:
+          repository: GrieferPig/linux-esp32-s31
+          ref: v6.12-esp32-s31
+          path: s31linux/linux-esp32-s31
+
+      - name: Install build prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            autoconf automake bison flex gawk gperf help2man libncurses-dev \
+            libtool-bin meson ninja-build patch rsync texinfo unzip wget \
+            xz-utils zstd
+
+      - name: Build crosstool-NG
+        run: |
+          ./bootstrap
+          ./configure --enable-local
+          make -j"$(nproc)"
+
+      - name: Prepare ESP32-S31 configuration
+        run: |
+          sed \
+            -e "s|^CT_PREFIX_DIR=.*|CT_PREFIX_DIR=\"${GITHUB_WORKSPACE}/x-tools/riscv32-esp-linux-musl\"|" \
+            -e "s|^CT_LOCAL_PATCH_DIR=.*|CT_LOCAL_PATCH_DIR=\"${GITHUB_WORKSPACE}/s31linux/toolchain-patches\"|" \
+            -e "s|^CT_LINUX_CUSTOM_LOCATION=.*|CT_LINUX_CUSTOM_LOCATION=\"${GITHUB_WORKSPACE}/s31linux/linux-esp32-s31\"|" \
+            -e "s|^CT_BINUTILS_ESP32P4_BIN_WRAPPERS_LOCATION=.*|CT_BINUTILS_ESP32P4_BIN_WRAPPERS_LOCATION=\"${GITHUB_WORKSPACE}/esp-toolchain-bin-wrappers/gnu-riscv-binutils\"|" \
+            s31linux/configs/riscv32-esp-linux-musl.config > s31-linux.config
+          ./ct-ng defconfig DEFCONFIG="${GITHUB_WORKSPACE}/s31-linux.config"
+          sed -i -e 's/^CT_LOG_PROGRESS_BAR=y/# CT_LOG_PROGRESS_BAR is not set/' .config
+
+      - name: Build ESP32-S31 Linux toolchain
+        run: ./ct-ng build."$(nproc)"
+
+      - name: Verify generated toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          prefix="${GITHUB_WORKSPACE}/x-tools/riscv32-esp-linux-musl"
+          target="riscv32-esp-linux-musl"
+          gcc="${prefix}/bin/${target}-gcc"
+          readelf="${prefix}/bin/${target}-readelf"
+          objdump="${prefix}/bin/${target}-objdump"
+          libc="${prefix}/${target}/sysroot/usr/lib/libc.so"
+
+          "${gcc}" --version | tee toolchain-version.txt
+          "${readelf}" -A "${libc}" | tee libc-attributes.txt
+          rg_arch=$(sed -n 's/.*Tag_RISCV_arch: "\([^"]*\)".*/\1/p' libc-attributes.txt)
+          for extension in _f _zaamo _zalrsc _zba _zbb _zbc _zbs _xesploop _xespv2p2; do
+            [[ "${rg_arch}" == *"${extension}"* ]]
+          done
+
+          "${objdump}" -d "${libc}" > libc-disassembly.txt
+          grep -q 'esp.vld.128.ip' libc-disassembly.txt
+          grep -q 'esp.vst.128.ip' libc-disassembly.txt
+
+          cat > f-only-test.c <<'EOF'
+          __attribute__((noinline)) float addf(float a, float b) { return a + b; }
+          __attribute__((noinline)) double addd(double a, double b) { return a + b; }
+          EOF
+          "${gcc}" -O2 -S f-only-test.c -o f-only-test.s
+          grep -q 'fadd.s' f-only-test.s
+          grep -q '__adddf3' f-only-test.s
+          ! grep -Eq 'f(add|sub|mul|div)\\.d' f-only-test.s
+
+          "${gcc}" -O2 -c s31linux/rootfs/s31_ext_test.S -o s31-ext-test.o
+
+      - name: Package toolchain
+        run: |
+          prefix="${GITHUB_WORKSPACE}/x-tools/riscv32-esp-linux-musl"
+          cp .config "${prefix}/crosstool-ng.config"
+          cp toolchain-version.txt libc-attributes.txt f-only-test.s "${prefix}/"
+          mkdir -p artifact
+          tar -C "${prefix}" -cJf artifact/riscv32-esp-linux-musl.tar.xz .
+          sha256sum artifact/riscv32-esp-linux-musl.tar.xz \
+            > artifact/riscv32-esp-linux-musl.tar.xz.sha256
+
+      - name: Upload ESP32-S31 Linux toolchain
+        uses: actions/upload-artifact@v4
+        with:
+          name: riscv32-esp-linux-musl-${{ github.sha }}
+          path: artifact/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: riscv32-esp-linux-musl-build-log-${{ github.sha }}
+          path: |
+            build.log
+            .config
+            s31-linux.config
+            toolchain-version.txt
+            libc-attributes.txt
+            f-only-test.s
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 14

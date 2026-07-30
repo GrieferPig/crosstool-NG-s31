@@ -3,6 +3,8 @@ name: CI
 
 on:
   push:
+    branches-ignore:
+      - esp-1.28.x
   pull_request:
 
 jobs:
