@@ -1,5 +1,5 @@
---- /tmp/gcc-orig/gcc-git-0dbf5849/gcc/config/riscv/riscv.md	2026-07-30 20:38:20.000000000 +0800
-+++ /home/grieferpig/crosstool-NG/.build/riscv32-esp-linux-musl/src/gcc/gcc/config/riscv/riscv.md	2026-08-01 09:44:48.951432100 +0800
+--- a/gcc/config/riscv/riscv.md	2026-07-30 20:38:20.000000000 +0800
++++ b/gcc/config/riscv/riscv.md	2026-08-01 10:25:43.723354793 +0800
 @@ -35,6 +35,7 @@
  ;; ~ -- Print w if TARGET_64BIT is true; otherwise not print anything.
  
@@ -8,7 +8,27 @@
    ;; Override return address for exception handling.
    UNSPEC_EH_RETURN
  
-@@ -748,7 +749,7 @@
+@@ -78,6 +79,10 @@
+   ;; OR-COMBINE
+   UNSPEC_ORC_B
+ 
++  ;; Core-V xcv unspecs
++  UNSPEC_XCVMAC
++  UNSPEC_XCVALU
++
+   ;; Zbc unspecs
+   UNSPEC_CLMUL
+   UNSPEC_CLMULH
+@@ -110,6 +115,8 @@
+   UNSPECV_GPR_SAVE
+   UNSPECV_GPR_RESTORE
+ 
++  UNSPECV_ESP_LP
++
+   ;; Floating-point unspecs.
+   UNSPECV_FRCSR
+   UNSPECV_FSCSR
+@@ -748,7 +755,7 @@
  {
    /* operand matching MiG constraint is always meant to be split.  */
    if (which_alternative == 0)
@@ -17,7 +37,7 @@
    else
      return "add %0,%1,%2";
  }
-@@ -887,7 +888,7 @@
+@@ -887,7 +894,7 @@
      && (riscv_const_insns (GEN_INT (~INTVAL (operands[2])
  				    | -INTVAL (operands[3])), false)
  	<= riscv_const_insns (operands[3], false)))"
@@ -26,7 +46,7 @@
    "&& reload_completed"
    [(const_int 0)]
    {
-@@ -2480,7 +2481,7 @@
+@@ -2480,7 +2487,7 @@
     && !(p2m1_shift_operand (operands[1], <MODE>mode)
  	|| high_mask_shift_operand (operands[1], <MODE>mode)
  	|| exact_log2 (INTVAL (operands[1])) >= 0)"
@@ -35,7 +55,7 @@
    "&& 1"
    [(const_int 0)]
  {
-@@ -2990,7 +2991,7 @@
+@@ -2990,7 +2997,7 @@
      && SMALL_OPERAND (INTVAL (operands[3]) >> INTVAL (operands[2]))
      && (!TARGET_ZBS || popcount_hwi (INTVAL (operands[3])) > 1)
      && (INTVAL (operands[3]) & ((1ULL << INTVAL (operands[2])) - 1)) == 0)"
@@ -44,7 +64,7 @@
    "&& 1"
    [(set (match_dup 0) (any_bitwise:X (match_dup 1) (match_dup 3)))
     (set (match_dup 0) (ashift:X (match_dup 0) (match_dup 2)))]
-@@ -3065,7 +3066,7 @@
+@@ -3065,7 +3072,7 @@
     && !(TARGET_64BIT
          && (INTVAL (operands[3]) > 0)
          && (INTVAL (operands[2]) + INTVAL (operands[3]) == 32))"
@@ -53,7 +73,7 @@
    "&& reload_completed"
    [(set (match_dup 4)
       (ashift:GPR (match_dup 1) (match_dup 2)))
-@@ -3134,7 +3135,7 @@
+@@ -3134,7 +3141,7 @@
     (clobber (match_scratch:DI 4 "=&r"))]
    "TARGET_64BIT && !TARGET_ZBA
     && ((INTVAL (operands[3]) >> INTVAL (operands[2])) == 0xffffffff)"
@@ -62,7 +82,7 @@
    "&& reload_completed"
    [(set (match_dup 4)
  	(ashift:DI (match_dup 1) (const_int 32)))
-@@ -3163,7 +3164,7 @@
+@@ -3163,7 +3170,7 @@
  	 (pc)))
     (clobber (match_scratch:X 4 "=&r"))]
    "!SMALL_OPERAND (INTVAL (operands[3]))"
@@ -71,7 +91,7 @@
    "&& reload_completed"
    [(set (match_dup 4) (lshiftrt:X (subreg:X (match_dup 2) 0) (match_dup 6)))
     (set (match_dup 4) (and:X (match_dup 4) (match_dup 7)))
-@@ -3176,7 +3177,8 @@
+@@ -3176,7 +3183,8 @@
  	operands[6] = GEN_INT (trailing);
  	operands[7] = GEN_INT (mask >> trailing);
  }
@@ -81,7 +101,7 @@
  
  (define_insn_and_split "*branch<ANYI:mode>_shiftedarith_<optab>_shifted"
    [(set (pc)
-@@ -3192,7 +3194,7 @@
+@@ -3192,7 +3200,7 @@
      && !SMALL_OPERAND (INTVAL (operands[3]))
      && SMALL_AFTER_COMMON_TRAILING_SHIFT (INTVAL (operands[2]),
  					     INTVAL (operands[3]))"
@@ -90,7 +110,7 @@
    "&& reload_completed"
    [(set (match_dup 4) (ashiftrt:X (match_dup 1) (match_dup 7)))
     (set (match_dup 4) (match_dup 10))
-@@ -3218,7 +3220,8 @@
+@@ -3218,7 +3226,8 @@
    else
      operands[10] = gen_rtx_AND (word_mode, operands[4], operands[8]);
  }
@@ -100,7 +120,7 @@
  
  (define_insn_and_split "*branch<ANYI:mode>_shiftedmask_equals_zero"
    [(set (pc)
-@@ -3232,7 +3235,7 @@
+@@ -3232,7 +3241,7 @@
    "(INTVAL (operands[3]) >= 0 || !partial_subreg_p (operands[2]))
      && popcount_hwi (INTVAL (operands[3])) > 1
      && !SMALL_OPERAND (INTVAL (operands[3]))"
@@ -109,7 +129,7 @@
    "&& reload_completed"
    [(set (match_dup 4) (ashift:X (subreg:X (match_dup 2) 0) (match_dup 6)))
     (set (match_dup 4) (lshiftrt:X (match_dup 4) (match_dup 7)))
-@@ -3246,7 +3249,8 @@
+@@ -3246,7 +3255,8 @@
  	operands[6] = GEN_INT (leading);
  	operands[7] = GEN_INT (leading + trailing);
  }
@@ -119,7 +139,7 @@
  
  (define_insn "*branch<mode>"
    [(set (pc)
-@@ -3371,7 +3375,7 @@
+@@ -3371,7 +3381,7 @@
  		      (pc)))
     (clobber (match_operand:X 4 "register_operand" "=r"))]
    "TARGET_HARD_FLOAT || TARGET_ZFINX"
@@ -128,7 +148,7 @@
    "&& reload_completed"
    [(set (match_dup 4)
  	(match_op_dup:X 1 [(match_dup 2) (match_dup 3)]))
-@@ -3403,7 +3407,7 @@
+@@ -3403,7 +3413,7 @@
  		      (pc)))
     (clobber (match_operand:X 4 "register_operand" "=r"))]
    "TARGET_HARD_FLOAT || TARGET_ZFINX"
@@ -137,7 +157,7 @@
    "&& reload_completed"
    [(set (match_dup 4)
  	(eq:X (match_dup 2) (match_dup 3)))
-@@ -3438,7 +3442,7 @@
+@@ -3438,7 +3448,7 @@
  	    (pc)))
     (clobber (match_scratch:X 4 "=&r"))]
    ""
@@ -146,7 +166,7 @@
    "reload_completed"
    [(set (match_dup 4)
  	(ashift:X (match_dup 2) (match_dup 3)))
-@@ -3456,7 +3460,8 @@
+@@ -3456,7 +3466,8 @@
    else
      operands[0] = gen_rtx_LT (<MODE>mode, operands[4], const0_rtx);
  }
@@ -156,7 +176,7 @@
  
  (define_insn_and_split "*branch_on_bit_range<X:mode>"
    [(set (pc)
-@@ -3470,7 +3475,7 @@
+@@ -3470,7 +3481,7 @@
  	    (pc)))
     (clobber (match_scratch:X 4 "=&r"))]
    ""
@@ -165,7 +185,7 @@
    "reload_completed"
    [(set (match_dup 4)
  	(ashift:X (match_dup 2) (match_dup 3)))
-@@ -3482,7 +3487,8 @@
+@@ -3482,7 +3493,8 @@
  {
    operands[3] = GEN_INT (GET_MODE_BITSIZE (<MODE>mode) - INTVAL (operands[3]));
  }
@@ -175,7 +195,7 @@
  
  ;;
  ;;  ....................
-@@ -3881,14 +3887,14 @@
+@@ -3881,14 +3893,14 @@
    [(unspec [(match_operand:SI 0 "register_operand" "r")] UNSPEC_EH_RETURN)
     (clobber (match_scratch:SI 1 "=&r"))]
    "! TARGET_64BIT"
@@ -192,7 +212,7 @@
    [(set_attr "type" "jump")])
  
  (define_split
-@@ -3904,7 +3910,7 @@
+@@ -3904,7 +3916,7 @@
  (define_insn_and_split "eh_return_internal"
    [(eh_return)]
    ""
@@ -201,7 +221,7 @@
    "epilogue_completed"
    [(const_int 0)]
    "riscv_expand_epilogue (EXCEPTION_RETURN); DONE;"
-@@ -4559,7 +4565,7 @@
+@@ -4559,7 +4571,7 @@
     (clobber (match_scratch:DI 5 "=&r"))]
    "TARGET_64BIT
     && (INTVAL (operands[3]) | ((1 << INTVAL (operands[2])) - 1)) == 0xffffffff"
@@ -210,7 +230,7 @@
    "&& reload_completed"
    [(set (match_dup 5) (ashift:DI (match_dup 1) (match_dup 2)))
     (set (match_dup 0) (sign_extend:DI (plus:SI (match_dup 6) (match_dup 4))))]
-@@ -4689,7 +4695,7 @@
+@@ -4689,7 +4701,7 @@
  		 (match_operand 3 "const_int_operand" "n")))
     (clobber (match_scratch:DI 4 "=&r"))]
    "(TARGET_64BIT && riscv_const_insns (operands[3], false) == 1)"
@@ -219,7 +239,7 @@
    "&& reload_completed"
    [(const_int 0)]
    "{
-@@ -4717,7 +4723,7 @@
+@@ -4717,7 +4729,7 @@
  				 (match_operand 3 "const_int_operand" "n"))))
     (clobber (match_scratch:DI 4 "=&r"))]
    "(TARGET_64BIT && riscv_const_insns (operands[3], false) == 1)"
@@ -228,15 +248,15 @@
    "&& reload_completed"
    [(const_int 0)]
    "{
-@@ -4825,3 +4831,42 @@
+@@ -4825,3 +4837,42 @@
  (include "zc.md")
  (include "corev.md")
  (include "xiangshan.md")
 +
 +(define_insn "esp_lp_setup"
-+  [(unspec [(match_operand:SI 0 "const_int_operand" "i")
++  [(unspec_volatile [(match_operand:SI 0 "const_int_operand" "i")
 +            (match_operand:SI 1 "register_operand" "r")
-+            (label_ref (match_operand 2 "" ""))] UNSPEC_ESP_LP)]
++            (label_ref (match_operand 2 "" ""))] UNSPECV_ESP_LP)]
 +  "TARGET_XESPLOOP"
 +  "esp.lp.setup\t%0, %1, %l2"
 +)
@@ -265,14 +285,14 @@
 +   (set (match_dup 0)
 +        (plus:SI (match_dup 0)
 +                 (const_int -1)))
-+   (unspec [(const_int 0)] UNSPEC_ESP_LP)]
++   (unspec_volatile [(const_int 0)] UNSPECV_ESP_LP)]
 +  "TARGET_XESPLOOP"
 +  "\n"
 +  [(set_attr "type" "branch")
 +   (set_attr "length" "0")]
 +)
---- /tmp/gcc-orig/gcc-git-0dbf5849/gcc/config/riscv/riscv.cc	2026-07-30 20:38:20.000000000 +0800
-+++ /home/grieferpig/crosstool-NG/.build/riscv32-esp-linux-musl/src/gcc/gcc/config/riscv/riscv.cc	2026-08-01 09:45:00.139431566 +0800
+--- a/gcc/config/riscv/riscv.cc	2026-07-30 20:38:20.000000000 +0800
++++ b/gcc/config/riscv/riscv.cc	2026-08-01 11:11:52.355264028 +0800
 @@ -58,6 +58,7 @@
  #include "function-abi.h"
  #include "diagnostic.h"
@@ -296,7 +316,7 @@
    /* Do nothing unless we have -msave-restore */
    if (TARGET_SAVE_RESTORE)
      riscv_remove_unneeded_save_restore_calls ();
-@@ -14315,6 +14321,166 @@
+@@ -14315,6 +14321,151 @@
  #undef TARGET_CUSTOM_FUNCTION_DESCRIPTORS
  #define TARGET_CUSTOM_FUNCTION_DESCRIPTORS 1
  
@@ -398,23 +418,8 @@
 +    }
 +  else
 +    {
-+      rtx_insn *def_insn = NULL;
-+      for (rtx_insn *scan = BB_END (entry_bb); scan && scan != BB_HEAD (entry_bb); scan = PREV_INSN (scan))
-+        {
-+          if (NONDEBUG_INSN_P (scan) && reg_set_p (loop->iter_reg, scan))
-+            {
-+              def_insn = scan;
-+              break;
-+            }
-+        }
-+
-+      if (def_insn)
-+        entry_after = def_insn;
-+      else
-+        {
-+          while (DEBUG_INSN_P (entry_after) || (NOTE_P (entry_after) && NOTE_KIND (entry_after) != NOTE_INSN_BASIC_BLOCK))
-+            entry_after = PREV_INSN (entry_after);
-+        }
++      while (DEBUG_INSN_P (entry_after) || NOTE_P (entry_after))
++        entry_after = PREV_INSN (entry_after);
 +      emit_insn_after (seq, entry_after);
 +    }
 +  return true;
