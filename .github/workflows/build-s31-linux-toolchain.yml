@@ -87,10 +87,12 @@ jobs:
             https://sources.buildroot.net/musl/musl-1.2.5.tar.gz \
             -O "${GITHUB_WORKSPACE}/src/musl-1.2.5.tar.gz"
 
-      - name: Verify bundled S31 musl patch set
+      - name: Verify bundled S31 patch set
         shell: bash
         run: |
           set -euo pipefail
+          test -f packages/gcc/git-0dbf5849/0001-xesploop.patch
+          test -f packages/gcc/git-0dbf5849/0002-riscv-xesploop-reject-early-exit-loops.patch
           test -f packages/musl/1.2.5/0002-riscv32-add-xespv-string-operations.patch
           test ! -e packages/musl/1.2.5/0002-riscv32-add-esp32s31-xespv-memory-routines.patch
           grep -q '^CT_PATCH_BUNDLED=y$' .config
@@ -142,6 +144,77 @@ jobs:
 
           "${gcc}" -O2 -c s31linux/rootfs/s31_ext_test.S -o s31-ext-test.o
 
+          cat > xesploop-control-flow-test.c <<'EOF'
+          __attribute__((noinline)) int early_exit(const unsigned char *p)
+          {
+            for (int i = 0; i < 32; i++)
+              if (p[i] == 0)
+                return i;
+            return -1;
+          }
+
+          __attribute__((noinline)) unsigned single_exit(const unsigned char *p)
+          {
+            unsigned sum = 0;
+            for (int i = 0; i < 32; i++)
+              sum += p[i];
+            return sum;
+          }
+
+          __attribute__((noinline)) void *branch_end(void **items, int count,
+                                                     void **out)
+          {
+            void *last = 0;
+            for (int i = 0; i < count; i++) {
+              void *item = *items++;
+              if (item)
+                last = item;
+            }
+            if (out)
+              *out = 0;
+            return last;
+          }
+          EOF
+          "${gcc}" -O2 -S xesploop-control-flow-test.c -o xesploop-control-flow-test.s
+          sed -n '/early_exit:/,/\.size[[:space:]]*early_exit/p' \
+            xesploop-control-flow-test.s > xesploop-early-exit.s
+          sed -n '/single_exit:/,/\.size[[:space:]]*single_exit/p' \
+            xesploop-control-flow-test.s > xesploop-single-exit.s
+          sed -n '/branch_end:/,/\.size[[:space:]]*branch_end/p' \
+            xesploop-control-flow-test.s > xesploop-branch-end.s
+          ! grep -q 'esp\.lp\.setup' xesploop-early-exit.s
+          grep -q 'esp\.lp\.setup' xesploop-single-exit.s
+          grep -q 'esp\.lp\.setup' xesploop-branch-end.s
+
+          # The XEspressif TRM forbids a branch or jump at the HWLP end.
+          end_label="$({ sed -n \
+            's/.*esp\.lp\.setup[^,]*,[^,]*,[[:space:]]*\([^[:space:]]*\).*/\1/p' \
+            xesploop-single-exit.s; } | head -n1)"
+          test -n "${end_label}"
+          end_opcode="$(awk -v label="${end_label}:" '
+            $1 == label { at_end = 1; next }
+            at_end && $1 !~ /^\./ { print $1; exit }
+          ' xesploop-single-exit.s)"
+          test -n "${end_opcode}"
+          case "${end_opcode}" in
+            b*|j*|ret|call|tail)
+              echo "unsafe Xesploop end opcode: ${end_opcode}" >&2
+              exit 1
+              ;;
+          esac
+
+          # A label-only latch used to alias the end address with the branch
+          # in the successor block. It must now materialize a real nop.
+          end_label="$({ sed -n \
+            's/.*esp\.lp\.setup[^,]*,[^,]*,[[:space:]]*\([^[:space:]]*\).*/\1/p' \
+            xesploop-branch-end.s; } | head -n1)"
+          test -n "${end_label}"
+          end_opcode="$(awk -v label="${end_label}:" '
+            $1 == label { at_end = 1; next }
+            at_end && $1 !~ /^\./ { print $1; exit }
+          ' xesploop-branch-end.s)"
+          test "${end_opcode}" = nop
+
       - name: Package toolchain
         run: |
           prefix="${GITHUB_WORKSPACE}/x-tools/riscv32-esp-linux-musl"
@@ -180,6 +253,10 @@ jobs:
             memcpy-disassembly.txt
             memset-disassembly.txt
             f-only-test.s
+            xesploop-control-flow-test.s
+            xesploop-early-exit.s
+            xesploop-single-exit.s
+            xesploop-branch-end.s
           include-hidden-files: true
           if-no-files-found: ignore
           retention-days: 14
