@@ -87,6 +87,16 @@ jobs:
             https://sources.buildroot.net/musl/musl-1.2.5.tar.gz \
             -O "${GITHUB_WORKSPACE}/src/musl-1.2.5.tar.gz"
 
+      - name: Verify bundled S31 musl patch set
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f packages/musl/1.2.5/0002-riscv32-add-xespv-string-operations.patch
+          test ! -e packages/musl/1.2.5/0002-riscv32-add-esp32s31-xespv-memory-routines.patch
+          grep -q '^CT_PATCH_BUNDLED=y$' .config
+          grep -q '^CT_PATCH_ORDER="bundled"$' .config
+          grep -q '^CT_MUSL_VERSION="1.2.5"$' .config
+
       - name: Build ESP32-S31 Linux toolchain
         run: ./ct-ng build."$(nproc)"
 
@@ -110,8 +120,16 @@ jobs:
           done
 
           "${objdump}" -d "${libc}" > libc-disassembly.txt
+          for symbol in memcpy memchr memrchr memcmp strcmp; do
+            grep -q "<${symbol}>:" libc-disassembly.txt
+          done
+          grep -q '<__riscv32_xespv_memcpy64>:' libc-disassembly.txt
+          sed -n '/<memcpy>:/,/^$/p' libc-disassembly.txt > memcpy-disassembly.txt
+          sed -n '/<memset>:/,/^$/p' libc-disassembly.txt > memset-disassembly.txt
+          grep -q '__riscv32_xespv_memcpy64' memcpy-disassembly.txt
           grep -q 'esp.vld.128.ip' libc-disassembly.txt
           grep -q 'esp.vst.128.ip' libc-disassembly.txt
+          ! grep -q 'esp\.' memset-disassembly.txt
 
           cat > f-only-test.c <<'EOF'
           __attribute__((noinline)) float addf(float a, float b) { return a + b; }
@@ -158,6 +176,9 @@ jobs:
             s31-linux.config
             toolchain-version.txt
             libc-attributes.txt
+            libc-disassembly.txt
+            memcpy-disassembly.txt
+            memset-disassembly.txt
             f-only-test.s
           include-hidden-files: true
           if-no-files-found: ignore
