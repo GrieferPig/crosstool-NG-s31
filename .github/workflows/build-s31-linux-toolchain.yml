@@ -98,6 +98,11 @@ jobs:
           grep -q '^CT_PATCH_BUNDLED=y$' .config
           grep -q '^CT_PATCH_ORDER="bundled"$' .config
           grep -q '^CT_MUSL_VERSION="1.2.5"$' .config
+          sha256sum \
+            packages/gcc/git-0dbf5849/0001-xesploop.patch \
+            packages/gcc/git-0dbf5849/0002-riscv-xesploop-reject-early-exit-loops.patch \
+            packages/musl/1.2.5/0002-riscv32-add-xespv-string-operations.patch \
+            | tee s31-patch-sha256.txt
 
       - name: Build ESP32-S31 Linux toolchain
         run: ./ct-ng build."$(nproc)"
@@ -127,10 +132,18 @@ jobs:
           done
           grep -q '<__riscv32_xespv_memcpy64>:' libc-disassembly.txt
           sed -n '/<memcpy>:/,/^$/p' libc-disassembly.txt > memcpy-disassembly.txt
+          sed -n '/<__riscv32_xespv_memcpy64>:/,/^$/p' libc-disassembly.txt \
+            > memcpy-kernel-disassembly.txt
           sed -n '/<memset>:/,/^$/p' libc-disassembly.txt > memset-disassembly.txt
           grep -q '__riscv32_xespv_memcpy64' memcpy-disassembly.txt
-          grep -q 'esp.vld.128.ip' libc-disassembly.txt
-          grep -q 'esp.vst.128.ip' libc-disassembly.txt
+          for symbol in memchr memrchr memcmp strcmp; do
+            sed -n "/<${symbol}>:/,/^$/p" libc-disassembly.txt \
+              > "${symbol}-disassembly.txt"
+            grep -q 'esp.vld.128.ip' "${symbol}-disassembly.txt"
+            grep -q 'esp.vcmp.eq.u8' "${symbol}-disassembly.txt"
+          done
+          grep -q 'esp.vld.128.ip' memcpy-kernel-disassembly.txt
+          grep -q 'esp.vst.128.ip' memcpy-kernel-disassembly.txt
           ! grep -q 'esp\.' memset-disassembly.txt
 
           cat > f-only-test.c <<'EOF'
@@ -220,7 +233,8 @@ jobs:
           prefix="${GITHUB_WORKSPACE}/x-tools/riscv32-esp-linux-musl"
           mkdir -p package-metadata
           cp .config package-metadata/crosstool-ng.config
-          cp toolchain-version.txt libc-attributes.txt f-only-test.s package-metadata/
+          cp toolchain-version.txt libc-attributes.txt f-only-test.s \
+            s31-patch-sha256.txt package-metadata/
           mkdir -p artifact
           tar -cJf artifact/riscv32-esp-linux-musl.tar.xz \
             -C "${prefix}" . \
@@ -251,7 +265,13 @@ jobs:
             libc-attributes.txt
             libc-disassembly.txt
             memcpy-disassembly.txt
+            memcpy-kernel-disassembly.txt
             memset-disassembly.txt
+            memchr-disassembly.txt
+            memrchr-disassembly.txt
+            memcmp-disassembly.txt
+            strcmp-disassembly.txt
+            s31-patch-sha256.txt
             f-only-test.s
             xesploop-control-flow-test.s
             xesploop-early-exit.s
