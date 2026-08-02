@@ -6,51 +6,105 @@ leaves the loop body before its configured end address.  Converting a loop
 that contains a return, break, or other outgoing edge therefore leaves the
 hardware loop armed and can corrupt subsequent control flow.
 
-The generic hw-doloop analysis already records this condition as
-jumps_outof.  Reject these loops in the RISC-V target hook so that GCC falls
-back to an ordinary branch loop while retaining Xesploop for single-exit
-loops.
+The generic hw-doloop analysis records outgoing edges as jumps_outof.  Reject
+those loops in the RISC-V target hook.  Also reject branches whose targets are
+physically after the selected HWLP end instruction: such an edge can remain
+inside the compiler's loop CFG while still skipping the hardware end address.
+Backward and internal branches that cannot skip the end remain eligible.
 
 The XEspressif TRM also warns that placing a branch or jump at the hardware
-loop end address can cause unexpected behavior.  A label-only latch can alias
-the HWLP end address with a branch in the successor block, so materialize a
-nop at that boundary and reject an actual jump latch.
+loop end address can cause unexpected behavior.  Labels and successfully
+converted inner loop-end patterns have zero length, so walk past them to find
+the real instruction at the outer HWLP end.  Reject the loop if that
+instruction is a jump; otherwise use it directly as the end.  Do not insert a
+nop, which costs one cycle per hardware-loop iteration.
 ---
- gcc/config/riscv/riscv.cc | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+ gcc/config/riscv/riscv.cc | 60 ++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 59 insertions(+), 1 deletion(-)
 
 diff --git a/gcc/config/riscv/riscv.cc b/gcc/config/riscv/riscv.cc
 --- a/gcc/config/riscv/riscv.cc
 +++ b/gcc/config/riscv/riscv.cc
-@@ -14367,7 +14367,10 @@ riscv_hwloops_opt_p (hwloop_info loop)
+@@ -14356,12 +14356,44 @@ riscv_hwloop_pattern_reg (rtx_insn *insn)
+ }
+
+ static bool
++riscv_hwloop_converted_inner_end_p (hwloop_info loop, rtx_insn *insn)
++{
++  hwloop_info inner;
++  unsigned int i;
++
++  for (i = 0; loop->loops.iterate (i, &inner); i++)
++    if (inner != loop && !inner->bad && inner->loop_end == insn)
++      return true;
++
++  return false;
++}
++
++/* Return true if LABEL is physically before END.  A branch to a label after
++   END would skip the configured HWLP end address and leave the loop armed.  */
++static bool
++riscv_hwloop_label_before_end_p (rtx label, rtx_insn *end)
++{
++  for (rtx_insn *insn = get_insns (); insn; insn = NEXT_INSN (insn))
++    {
++      if (insn == label)
++        return true;
++      if (insn == end)
++        return false;
++    }
++
++  return false;
++}
++
++static bool
+ riscv_hwloops_opt_p (hwloop_info loop)
+ {
    if (loop->depth > 2)
      return false;
- 
+
 -  if (loop->has_call || loop->has_asm)
 +  /* XEspressif hardware loops cannot be cancelled on an early exit.  If a
 +     branch leaves the loop body, the loop state remains armed and can alter
 +     control flow after the branch target (including after a return).  */
 +  if (loop->has_call || loop->has_asm || loop->jumps_outof)
      return false;
- 
+
    if (!loop->incoming_dest || loop->incoming_dest != loop->head)
-@@ -14390,2 +14393,9 @@ riscv_hwloops_opt_p (hwloop_info loop)
--  if (!last_insn)
-+  /* The XEspressif TRM warns that a branch or jump at the HWLP end address
-+     can cause unexpected behavior.  A label-only latch otherwise aliases the
-+     end address with the first instruction in the successor block, so give
-+     it a real nop.  Reject an actual jump latch.  */
-+  if (!last_insn)
+@@ -14387,8 +14419,34 @@ riscv_hwloops_opt_p (hwloop_info loop)
+   basic_block entry_bb = entry_edge->src;
+
+   rtx_insn *last_insn = prev_nonnote_nondebug_insn (loop->loop_end);
++  /* Labels and successfully converted inner esp_lp_end patterns emit no
++     bytes.  Walk over them so the label used by esp.lp.setup names the real
++     final instruction.  An inner loop that fell back to a scalar branch is
++     deliberately not skipped: placing that branch at the outer HWLP end is
++     forbidden by the XEspressif TRM.  */
++  while (last_insn
++         && (LABEL_P (last_insn)
++             || riscv_hwloop_converted_inner_end_p (loop, last_insn)))
++    last_insn = prev_nonnote_nondebug_insn (last_insn);
+   if (!last_insn)
      return false;
-+  bool label_latch = LABEL_P (last_insn);
 +  if (JUMP_P (last_insn))
 +    return false;
-@@ -14394,3 +14405,5 @@ riscv_hwloops_opt_p (hwloop_info loop)
++
++  /* A jump may stay within the compiler's loop CFG while still bypassing the
++     physical instruction configured as the HWLP end.  Such a path never
++     clears/reloads the hardware loop state.  Retain backward and internal
++     branches whose targets precede the end, but reject returns, indirect
++     jumps and all branches to labels after it.  */
++  basic_block bb;
++  FOR_EACH_VEC_ELT (loop->blocks, i, bb)
++    FOR_BB_INSNS (bb, insn)
++      if (JUMP_P (insn) && insn != loop->loop_end
++          && !riscv_hwloop_converted_inner_end_p (loop, insn)
++          && (!JUMP_LABEL (insn)
++              || !riscv_hwloop_label_before_end_p (JUMP_LABEL (insn),
++                                                   last_insn)))
++        return false;
+
    rtx_code_label *end_label = gen_label_rtx ();
    emit_label_before (end_label, last_insn);
-+  if (label_latch)
-+    emit_insn_after (gen_nop (), last_insn);
- 
--- 
+--
 2.39.5
-

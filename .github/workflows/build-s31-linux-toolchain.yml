@@ -197,7 +197,7 @@ jobs:
             xesploop-control-flow-test.s > xesploop-branch-end.s
           ! grep -q 'esp\.lp\.setup' xesploop-early-exit.s
           grep -q 'esp\.lp\.setup' xesploop-single-exit.s
-          grep -q 'esp\.lp\.setup' xesploop-branch-end.s
+          ! grep -q 'esp\.lp\.setup' xesploop-branch-end.s
 
           # The XEspressif TRM forbids a branch or jump at the HWLP end.
           end_label="$({ sed -n \
@@ -215,18 +215,7 @@ jobs:
               exit 1
               ;;
           esac
-
-          # A label-only latch used to alias the end address with the branch
-          # in the successor block. It must now materialize a real nop.
-          end_label="$({ sed -n \
-            's/.*esp\.lp\.setup[^,]*,[^,]*,[[:space:]]*\([^[:space:]]*\).*/\1/p' \
-            xesploop-branch-end.s; } | head -n1)"
-          test -n "${end_label}"
-          end_opcode="$(awk -v label="${end_label}:" '
-            $1 == label { at_end = 1; next }
-            at_end && $1 !~ /^\./ { print $1; exit }
-          ' xesploop-branch-end.s)"
-          test "${end_opcode}" = nop
+          test "${end_opcode}" != nop
 
       - name: Package toolchain
         run: |
