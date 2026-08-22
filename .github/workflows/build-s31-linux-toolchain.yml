@@ -73,12 +73,20 @@ jobs:
             -e "s|^CT_LOCAL_PATCH_DIR=.*|CT_LOCAL_PATCH_DIR=\"${GITHUB_WORKSPACE}/s31linux/toolchain-patches\"|" \
             -e "s|^CT_LINUX_CUSTOM_LOCATION=.*|CT_LINUX_CUSTOM_LOCATION=\"${GITHUB_WORKSPACE}/s31linux/linux-esp32-s31\"|" \
             -e "s|^CT_BINUTILS_ESP32P4_BIN_WRAPPERS_LOCATION=.*|CT_BINUTILS_ESP32P4_BIN_WRAPPERS_LOCATION=\"${GITHUB_WORKSPACE}/esp-toolchain-bin-wrappers/gnu-riscv-binutils\"|" \
+            -e 's|^CT_ARCH_ARCH=.*|CT_ARCH_ARCH="rv32imafbc_zicsr_zifencei_zaamo_zalrsc_zba_zbb_zbc_zbs"|' \
+            -e 's|^CT_TARGET_CFLAGS=.*|CT_TARGET_CFLAGS=""|' \
+            -e '/^CT_INSTALL_LICENSES=/d' \
+            -e '/^# CT_INSTALL_LICENSES is not set$/d' \
             s31linux/configs/riscv32-esp-linux-musl.config > s31-linux.config
+          printf '%s\n' '# CT_INSTALL_LICENSES is not set' >> s31-linux.config
           ./ct-ng defconfig DEFCONFIG="${GITHUB_WORKSPACE}/s31-linux.config"
           sed -i \
             -e 's/^CT_LOG_PROGRESS_BAR=y/# CT_LOG_PROGRESS_BAR is not set/' \
             -e "s|^CT_LOCAL_TARBALLS_DIR=.*|CT_LOCAL_TARBALLS_DIR=\"${GITHUB_WORKSPACE}/src\"|" \
             .config
+          grep -q '^CT_ARCH_ARCH="rv32imafbc_zicsr_zifencei_zaamo_zalrsc_zba_zbb_zbc_zbs"$' .config
+          grep -q '^CT_TARGET_CFLAGS=""$' .config
+          grep -q '^# CT_INSTALL_LICENSES is not set$' .config
 
       - name: Seed musl release tarball
         run: |
@@ -93,15 +101,13 @@ jobs:
           set -euo pipefail
           test -f packages/gcc/git-0dbf5849/0001-xesploop.patch
           test -f packages/gcc/git-0dbf5849/0002-riscv-xesploop-reject-early-exit-loops.patch
-          test -f packages/musl/1.2.5/0002-riscv32-add-xespv-string-operations.patch
-          test ! -e packages/musl/1.2.5/0002-riscv32-add-esp32s31-xespv-memory-routines.patch
+          test ! -e packages/musl/1.2.5/0002-riscv32-add-xespv-string-operations.patch
           grep -q '^CT_PATCH_BUNDLED=y$' .config
           grep -q '^CT_PATCH_ORDER="bundled"$' .config
           grep -q '^CT_MUSL_VERSION="1.2.5"$' .config
           sha256sum \
             packages/gcc/git-0dbf5849/0001-xesploop.patch \
             packages/gcc/git-0dbf5849/0002-riscv-xesploop-reject-early-exit-loops.patch \
-            packages/musl/1.2.5/0002-riscv32-add-xespv-string-operations.patch \
             | tee s31-patch-sha256.txt
 
       - name: Build ESP32-S31 Linux toolchain
@@ -122,29 +128,22 @@ jobs:
           ! grep -q 'crosstool-NG UNKNOWN' toolchain-version.txt
           "${readelf}" -A "${libc}" | tee libc-attributes.txt
           rg_arch=$(sed -n 's/.*Tag_RISCV_arch: "\([^"]*\)".*/\1/p' libc-attributes.txt)
-          for extension in _f _zaamo _zalrsc _zba _zbb _zbc _zbs _xesploop _xespv2p2; do
+          for extension in _f _zaamo _zalrsc _zba _zbb _zbc _zbs; do
             [[ "${rg_arch}" == *"${extension}"* ]]
           done
+          [[ "${rg_arch}" != *_xesploop* ]]
+          [[ "${rg_arch}" != *_xespv* ]]
 
           "${objdump}" -d "${libc}" > libc-disassembly.txt
           for symbol in memcpy memchr memrchr memcmp strcmp; do
             grep -q "<${symbol}>:" libc-disassembly.txt
           done
-          grep -q '<__riscv32_xespv_memcpy64>:' libc-disassembly.txt
-          sed -n '/<memcpy>:/,/^$/p' libc-disassembly.txt > memcpy-disassembly.txt
-          sed -n '/<__riscv32_xespv_memcpy64>:/,/^$/p' libc-disassembly.txt \
-            > memcpy-kernel-disassembly.txt
-          sed -n '/<memset>:/,/^$/p' libc-disassembly.txt > memset-disassembly.txt
-          grep -q '__riscv32_xespv_memcpy64' memcpy-disassembly.txt
-          for symbol in memchr memrchr memcmp strcmp; do
-            sed -n "/<${symbol}>:/,/^$/p" libc-disassembly.txt \
-              > "${symbol}-disassembly.txt"
-            grep -q 'esp.vld.128.ip' "${symbol}-disassembly.txt"
-            grep -q 'esp.vcmp.eq.u8' "${symbol}-disassembly.txt"
-          done
-          grep -q 'esp.vld.128.ip' memcpy-kernel-disassembly.txt
-          grep -q 'esp.vst.128.ip' memcpy-kernel-disassembly.txt
-          ! grep -q 'esp\.' memset-disassembly.txt
+          ! grep -q 'esp\.' libc-disassembly.txt
+
+          xesp_flags=(
+            -march=rv32imafbc_zicsr_zifencei_zaamo_zalrsc_zba_zbb_zbc_zbs_xesploop_xespv2p2
+            -mabi=ilp32 -mespv-spec=2p2
+          )
 
           cat > f-only-test.c <<'EOF'
           __attribute__((noinline)) float addf(float a, float b) { return a + b; }
@@ -155,7 +154,8 @@ jobs:
           grep -q '__adddf3' f-only-test.s
           ! grep -Eq 'f(add|sub|mul|div)\\.d' f-only-test.s
 
-          "${gcc}" -O2 -c s31linux/rootfs/s31_ext_test.S -o s31-ext-test.o
+          "${gcc}" "${xesp_flags[@]}" -O2 -c \
+            s31linux/rootfs/s31_ext_test.S -o s31-ext-test.o
 
           cat > xesploop-control-flow-test.c <<'EOF'
           __attribute__((noinline)) int early_exit(const unsigned char *p)
@@ -188,7 +188,8 @@ jobs:
             return last;
           }
           EOF
-          "${gcc}" -O2 -S xesploop-control-flow-test.c -o xesploop-control-flow-test.s
+          "${gcc}" "${xesp_flags[@]}" -O2 -S \
+            xesploop-control-flow-test.c -o xesploop-control-flow-test.s
           sed -n '/early_exit:/,/\.size[[:space:]]*early_exit/p' \
             xesploop-control-flow-test.s > xesploop-early-exit.s
           sed -n '/single_exit:/,/\.size[[:space:]]*single_exit/p' \
