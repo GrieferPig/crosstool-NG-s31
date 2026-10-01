@@ -1,0 +1,4493 @@
+{
+  "binutils_revision": "37a65a3e908599f625f94bd382ea06079a64a543",
+  "rows": [
+    {
+      "asm": "esp.vcmulas.s16.qacc.h q0,q0",
+      "class": "XESPV",
+      "match": "03396fbf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vcmulas.s16.qacc.h q0,q0,sat",
+      "class": "XESPV",
+      "match": "03396f3f",
+      "mask": "03ffff7f"
+    },
+    {
+      "asm": "esp.vcmulas.s16.qacc.h.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0380433f",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vcmulas.s16.qacc.h.ld.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0300433f",
+      "mask": "030063ff"
+    },
+    {
+      "asm": "esp.vcmulas.s16.qacc.h.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "030841bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vcmulas.s16.qacc.h.ld.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "030041bf",
+      "mask": "030063ff"
+    },
+    {
+      "asm": "esp.vcmulas.s16.qacc.l q0,q0",
+      "class": "XESPV",
+      "match": "03396dbf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vcmulas.s16.qacc.l q0,q0,sat",
+      "class": "XESPV",
+      "match": "03396d3f",
+      "mask": "03ffff7f"
+    },
+    {
+      "asm": "esp.vcmulas.s16.qacc.l.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0180433f",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vcmulas.s16.qacc.l.ld.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0100433f",
+      "mask": "030063ff"
+    },
+    {
+      "asm": "esp.vcmulas.s16.qacc.l.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "010841bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vcmulas.s16.qacc.l.ld.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "010041bf",
+      "mask": "030063ff"
+    },
+    {
+      "asm": "esp.vcmulas.s8.qacc.h q0,q0",
+      "class": "XESPV",
+      "match": "03396ebf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vcmulas.s8.qacc.h q0,q0,sat",
+      "class": "XESPV",
+      "match": "03396e3f",
+      "mask": "03ffff7f"
+    },
+    {
+      "asm": "esp.vcmulas.s8.qacc.h.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0280433f",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vcmulas.s8.qacc.h.ld.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0200433f",
+      "mask": "030063ff"
+    },
+    {
+      "asm": "esp.vcmulas.s8.qacc.h.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "020841bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vcmulas.s8.qacc.h.ld.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "020041bf",
+      "mask": "030063ff"
+    },
+    {
+      "asm": "esp.vcmulas.s8.qacc.l q0,q0",
+      "class": "XESPV",
+      "match": "03396cbf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vcmulas.s8.qacc.l q0,q0,sat",
+      "class": "XESPV",
+      "match": "03396c3f",
+      "mask": "03ffff7f"
+    },
+    {
+      "asm": "esp.vcmulas.s8.qacc.l.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0080433f",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vcmulas.s8.qacc.l.ld.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0000433f",
+      "mask": "030063ff"
+    },
+    {
+      "asm": "esp.vcmulas.s8.qacc.l.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "000841bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vcmulas.s8.qacc.l.ld.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "000041bf",
+      "mask": "030063ff"
+    },
+    {
+      "asm": "esp.vmulas.s16.qacc q0,q0",
+      "class": "XESPV",
+      "match": "03a96fbf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vmulas.s16.qacc q0,q0,sat",
+      "class": "XESPV",
+      "match": "03a96f3f",
+      "mask": "03ffff7f"
+    },
+    {
+      "asm": "esp.vmulas.s16.qacc.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "02e0203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.s16.qacc.ld.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "02c0203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.s16.qacc.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "020823bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.s16.qacc.ld.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0208233f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.s16.qacc.st.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "03e0203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.s16.qacc.st.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "03c0203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.s16.qacc.st.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "030823bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.s16.qacc.st.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0308233f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.s16.xacc q0,q0",
+      "class": "XESPV",
+      "match": "03296fbf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vmulas.s16.xacc q0,q0,sat",
+      "class": "XESPV",
+      "match": "03296f3f",
+      "mask": "03ffff7f"
+    },
+    {
+      "asm": "esp.vmulas.s16.xacc.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "00e0203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.s16.xacc.ld.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "00c0203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.s16.xacc.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "000823bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.s16.xacc.ld.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0008233f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.s16.xacc.st.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "01e0203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.s16.xacc.st.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "01c0203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.s16.xacc.st.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "010823bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.s16.xacc.st.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0108233f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.s8.qacc q0,q0",
+      "class": "XESPV",
+      "match": "03a96dbf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vmulas.s8.qacc q0,q0,sat",
+      "class": "XESPV",
+      "match": "03a96d3f",
+      "mask": "03ffff7f"
+    },
+    {
+      "asm": "esp.vmulas.s8.qacc.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0260203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.s8.qacc.ld.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0240203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.s8.qacc.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "020821bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.s8.qacc.ld.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0208213f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.s8.qacc.st.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0360203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.s8.qacc.st.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0340203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.s8.qacc.st.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "030821bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.s8.qacc.st.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0308213f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.s8.xacc q0,q0",
+      "class": "XESPV",
+      "match": "03296dbf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vmulas.s8.xacc q0,q0,sat",
+      "class": "XESPV",
+      "match": "03296d3f",
+      "mask": "03ffff7f"
+    },
+    {
+      "asm": "esp.vmulas.s8.xacc.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0060203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.s8.xacc.ld.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0040203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.s8.xacc.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "000821bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.s8.xacc.ld.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0008213f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.s8.xacc.st.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0160203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.s8.xacc.st.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0140203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.s8.xacc.st.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "010821bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.s8.xacc.st.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0108213f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.u16.qacc q0,q0",
+      "class": "XESPV",
+      "match": "03a96ebf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vmulas.u16.qacc q0,q0,sat",
+      "class": "XESPV",
+      "match": "03a96e3f",
+      "mask": "03ffff7f"
+    },
+    {
+      "asm": "esp.vmulas.u16.qacc.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "02a0203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.u16.qacc.ld.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0280203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.u16.qacc.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "020822bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.u16.qacc.ld.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0208223f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.u16.qacc.st.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "03a0203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.u16.qacc.st.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0380203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.u16.qacc.st.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "030822bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.u16.qacc.st.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0308223f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.u16.xacc q0,q0",
+      "class": "XESPV",
+      "match": "03296ebf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vmulas.u16.xacc q0,q0,sat",
+      "class": "XESPV",
+      "match": "03296e3f",
+      "mask": "03ffff7f"
+    },
+    {
+      "asm": "esp.vmulas.u16.xacc.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "00a0203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.u16.xacc.ld.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0080203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.u16.xacc.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "000822bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.u16.xacc.ld.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0008223f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.u16.xacc.st.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "01a0203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.u16.xacc.st.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0180203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.u16.xacc.st.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "010822bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.u16.xacc.st.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0108223f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.u8.qacc q0,q0",
+      "class": "XESPV",
+      "match": "03a96cbf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vmulas.u8.qacc q0,q0,sat",
+      "class": "XESPV",
+      "match": "03a96c3f",
+      "mask": "03ffff7f"
+    },
+    {
+      "asm": "esp.vmulas.u8.qacc.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0220203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.u8.qacc.ld.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0200203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.u8.qacc.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "020820bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.u8.qacc.ld.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0208203f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.u8.qacc.st.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0320203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.u8.qacc.st.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0300203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.u8.qacc.st.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "030820bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.u8.qacc.st.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0308203f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.u8.xacc q0,q0",
+      "class": "XESPV",
+      "match": "03296cbf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vmulas.u8.xacc q0,q0,sat",
+      "class": "XESPV",
+      "match": "03296c3f",
+      "mask": "03ffff7f"
+    },
+    {
+      "asm": "esp.vmulas.u8.xacc.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0020203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.u8.xacc.ld.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0000203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.u8.xacc.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "000820bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.u8.xacc.ld.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0008203f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.u8.xacc.st.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0120203f",
+      "mask": "03e8607f"
+    },
+    {
+      "asm": "esp.vmulas.u8.xacc.st.ip q0,x8,0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0100203f",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.vmulas.u8.xacc.st.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "010820bf",
+      "mask": "030863ff"
+    },
+    {
+      "asm": "esp.vmulas.u8.xacc.st.xp q0,x8,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0108203f",
+      "mask": "0308637f"
+    },
+    {
+      "asm": "esp.vmulas.s16.qacc.ldbc.incp q0,x8,q0,q0",
+      "class": "XESPV",
+      "match": "03f063bf",
+      "mask": "03f863ff"
+    },
+    {
+      "asm": "esp.vmulas.s16.qacc.ldbc.incp q0,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "03f0633f",
+      "mask": "03f8637f"
+    },
+    {
+      "asm": "esp.vmulas.s8.qacc.ldbc.incp q0,x8,q0,q0",
+      "class": "XESPV",
+      "match": "03f061bf",
+      "mask": "03f863ff"
+    },
+    {
+      "asm": "esp.vmulas.s8.qacc.ldbc.incp q0,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "03f0613f",
+      "mask": "03f8637f"
+    },
+    {
+      "asm": "esp.vmulas.u16.qacc.ldbc.incp q0,x8,q0,q0",
+      "class": "XESPV",
+      "match": "03f062bf",
+      "mask": "03f863ff"
+    },
+    {
+      "asm": "esp.vmulas.u16.qacc.ldbc.incp q0,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "03f0623f",
+      "mask": "03f8637f"
+    },
+    {
+      "asm": "esp.vmulas.u8.qacc.ldbc.incp q0,x8,q0,q0",
+      "class": "XESPV",
+      "match": "03f060bf",
+      "mask": "03f863ff"
+    },
+    {
+      "asm": "esp.vmulas.u8.qacc.ldbc.incp q0,x8,q0,q0,sat",
+      "class": "XESPV",
+      "match": "03f0603f",
+      "mask": "03f8637f"
+    },
+    {
+      "asm": "esp.vsmulas.s16.qacc q0,q0,0",
+      "class": "XESPV",
+      "match": "03e8fc3f",
+      "mask": "03effc7f"
+    },
+    {
+      "asm": "esp.vsmulas.s16.qacc q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "03c8fc3f",
+      "mask": "03cffc7f"
+    },
+    {
+      "asm": "esp.vsmulas.s16.qacc.ld.incp q0,x8,q0,q0,0",
+      "class": "XESPV",
+      "match": "038043bf",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vsmulas.s16.qacc.ld.incp q0,x8,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "030043bf",
+      "mask": "030063ff"
+    },
+    {
+      "asm": "esp.vsmulas.s8.qacc q0,q0,0",
+      "class": "XESPV",
+      "match": "0368fc3f",
+      "mask": "03effc7f"
+    },
+    {
+      "asm": "esp.vsmulas.s8.qacc q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0348fc3f",
+      "mask": "03cffc7f"
+    },
+    {
+      "asm": "esp.vsmulas.s8.qacc.ld.incp q0,x8,q0,q0,0",
+      "class": "XESPV",
+      "match": "018043bf",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vsmulas.s8.qacc.ld.incp q0,x8,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "010043bf",
+      "mask": "030063ff"
+    },
+    {
+      "asm": "esp.vsmulas.u16.qacc q0,q0,0",
+      "class": "XESPV",
+      "match": "03a8fc3f",
+      "mask": "03effc7f"
+    },
+    {
+      "asm": "esp.vsmulas.u16.qacc q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0388fc3f",
+      "mask": "03cffc7f"
+    },
+    {
+      "asm": "esp.vsmulas.u16.qacc.ld.incp q0,x8,q0,q0,0",
+      "class": "XESPV",
+      "match": "028043bf",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vsmulas.u16.qacc.ld.incp q0,x8,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "020043bf",
+      "mask": "030063ff"
+    },
+    {
+      "asm": "esp.vsmulas.u8.qacc q0,q0,0",
+      "class": "XESPV",
+      "match": "0328fc3f",
+      "mask": "03effc7f"
+    },
+    {
+      "asm": "esp.vsmulas.u8.qacc q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0308fc3f",
+      "mask": "03cffc7f"
+    },
+    {
+      "asm": "esp.vsmulas.u8.qacc.ld.incp q0,x8,q0,q0,0",
+      "class": "XESPV",
+      "match": "008043bf",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vsmulas.u8.qacc.ld.incp q0,x8,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "000043bf",
+      "mask": "030063ff"
+    },
+    {
+      "asm": "esp.cmul.s16 q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "03867c3f",
+      "mask": "03fe7c7f"
+    },
+    {
+      "asm": "esp.cmul.s16 q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "03847c3f",
+      "mask": "03fc7c7f"
+    },
+    {
+      "asm": "esp.cmul.s16 q0,q0,q0,0,dyn",
+      "class": "XESPV",
+      "match": "0386603f",
+      "mask": "03fe607f"
+    },
+    {
+      "asm": "esp.cmul.s16 q0,q0,q0,0,sat,dyn",
+      "class": "XESPV",
+      "match": "0384603f",
+      "mask": "03fc607f"
+    },
+    {
+      "asm": "esp.cmul.s16.ld.incp q0,x8,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "01c8601b",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.cmul.s16.ld.incp q0,x8,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0188601b",
+      "mask": "0388607f"
+    },
+    {
+      "asm": "esp.cmul.s16.ld.incp q0,x8,q0,q0,q0,0,dyn",
+      "class": "XESPV",
+      "match": "01c0001b",
+      "mask": "03c0007f"
+    },
+    {
+      "asm": "esp.cmul.s16.ld.incp q0,x8,q0,q0,q0,0,sat,dyn",
+      "class": "XESPV",
+      "match": "0180001b",
+      "mask": "0380007f"
+    },
+    {
+      "asm": "esp.cmul.s16.st.incp q0,x8,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "03c8601b",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.cmul.s16.st.incp q0,x8,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0388601b",
+      "mask": "0388607f"
+    },
+    {
+      "asm": "esp.cmul.s16.st.incp q0,x8,q0,q0,q0,0,dyn",
+      "class": "XESPV",
+      "match": "03c0001b",
+      "mask": "03c0007f"
+    },
+    {
+      "asm": "esp.cmul.s16.st.incp q0,x8,q0,q0,q0,0,sat,dyn",
+      "class": "XESPV",
+      "match": "0380001b",
+      "mask": "0380007f"
+    },
+    {
+      "asm": "esp.cmul.s8 q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "03067c3f",
+      "mask": "03fe7c7f"
+    },
+    {
+      "asm": "esp.cmul.s8 q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "03047c3f",
+      "mask": "03fc7c7f"
+    },
+    {
+      "asm": "esp.cmul.s8 q0,q0,q0,0,dyn",
+      "class": "XESPV",
+      "match": "0306603f",
+      "mask": "03fe607f"
+    },
+    {
+      "asm": "esp.cmul.s8 q0,q0,q0,0,sat,dyn",
+      "class": "XESPV",
+      "match": "0304603f",
+      "mask": "03fc607f"
+    },
+    {
+      "asm": "esp.cmul.s8.ld.incp q0,x8,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "00c8601b",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.cmul.s8.ld.incp q0,x8,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0088601b",
+      "mask": "0388607f"
+    },
+    {
+      "asm": "esp.cmul.s8.ld.incp q0,x8,q0,q0,q0,0,dyn",
+      "class": "XESPV",
+      "match": "00c0001b",
+      "mask": "03c0007f"
+    },
+    {
+      "asm": "esp.cmul.s8.ld.incp q0,x8,q0,q0,q0,0,sat,dyn",
+      "class": "XESPV",
+      "match": "0080001b",
+      "mask": "0380007f"
+    },
+    {
+      "asm": "esp.cmul.s8.st.incp q0,x8,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "02c8601b",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.cmul.s8.st.incp q0,x8,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0288601b",
+      "mask": "0388607f"
+    },
+    {
+      "asm": "esp.cmul.s8.st.incp q0,x8,q0,q0,q0,0,dyn",
+      "class": "XESPV",
+      "match": "02c0001b",
+      "mask": "03c0007f"
+    },
+    {
+      "asm": "esp.cmul.s8.st.incp q0,x8,q0,q0,q0,0,sat,dyn",
+      "class": "XESPV",
+      "match": "0280001b",
+      "mask": "0380007f"
+    },
+    {
+      "asm": "esp.cmul.u16 q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "03827c3f",
+      "mask": "03fe7c7f"
+    },
+    {
+      "asm": "esp.cmul.u16 q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "03807c3f",
+      "mask": "03fc7c7f"
+    },
+    {
+      "asm": "esp.cmul.u16 q0,q0,q0,0,dyn",
+      "class": "XESPV",
+      "match": "0382603f",
+      "mask": "03fe607f"
+    },
+    {
+      "asm": "esp.cmul.u16 q0,q0,q0,0,sat,dyn",
+      "class": "XESPV",
+      "match": "0380603f",
+      "mask": "03fc607f"
+    },
+    {
+      "asm": "esp.cmul.u16.ld.incp q0,x8,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0148601b",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.cmul.u16.ld.incp q0,x8,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0108601b",
+      "mask": "0388607f"
+    },
+    {
+      "asm": "esp.cmul.u16.ld.incp q0,x8,q0,q0,q0,0,dyn",
+      "class": "XESPV",
+      "match": "0140001b",
+      "mask": "03c0007f"
+    },
+    {
+      "asm": "esp.cmul.u16.ld.incp q0,x8,q0,q0,q0,0,sat,dyn",
+      "class": "XESPV",
+      "match": "0100001b",
+      "mask": "0380007f"
+    },
+    {
+      "asm": "esp.cmul.u16.st.incp q0,x8,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0348601b",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.cmul.u16.st.incp q0,x8,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0308601b",
+      "mask": "0388607f"
+    },
+    {
+      "asm": "esp.cmul.u16.st.incp q0,x8,q0,q0,q0,0,dyn",
+      "class": "XESPV",
+      "match": "0340001b",
+      "mask": "03c0007f"
+    },
+    {
+      "asm": "esp.cmul.u16.st.incp q0,x8,q0,q0,q0,0,sat,dyn",
+      "class": "XESPV",
+      "match": "0300001b",
+      "mask": "0380007f"
+    },
+    {
+      "asm": "esp.cmul.u8 q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "03027c3f",
+      "mask": "03fe7c7f"
+    },
+    {
+      "asm": "esp.cmul.u8 q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "03007c3f",
+      "mask": "03fc7c7f"
+    },
+    {
+      "asm": "esp.cmul.u8 q0,q0,q0,0,dyn",
+      "class": "XESPV",
+      "match": "0302603f",
+      "mask": "03fe607f"
+    },
+    {
+      "asm": "esp.cmul.u8 q0,q0,q0,0,sat,dyn",
+      "class": "XESPV",
+      "match": "0300603f",
+      "mask": "03fc607f"
+    },
+    {
+      "asm": "esp.cmul.u8.ld.incp q0,x8,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0048601b",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.cmul.u8.ld.incp q0,x8,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0008601b",
+      "mask": "0388607f"
+    },
+    {
+      "asm": "esp.cmul.u8.ld.incp q0,x8,q0,q0,q0,0,dyn",
+      "class": "XESPV",
+      "match": "0040001b",
+      "mask": "03c0007f"
+    },
+    {
+      "asm": "esp.cmul.u8.ld.incp q0,x8,q0,q0,q0,0,sat,dyn",
+      "class": "XESPV",
+      "match": "0000001b",
+      "mask": "0380007f"
+    },
+    {
+      "asm": "esp.cmul.u8.st.incp q0,x8,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0248601b",
+      "mask": "03c8607f"
+    },
+    {
+      "asm": "esp.cmul.u8.st.incp q0,x8,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0208601b",
+      "mask": "0388607f"
+    },
+    {
+      "asm": "esp.cmul.u8.st.incp q0,x8,q0,q0,q0,0,dyn",
+      "class": "XESPV",
+      "match": "0240001b",
+      "mask": "03c0007f"
+    },
+    {
+      "asm": "esp.cmul.u8.st.incp q0,x8,q0,q0,q0,0,sat,dyn",
+      "class": "XESPV",
+      "match": "0200001b",
+      "mask": "0380007f"
+    },
+    {
+      "asm": "esp.max.s16.a q0,x8",
+      "class": "XESPV",
+      "match": "2000985f",
+      "mask": "fcf7f87f"
+    },
+    {
+      "asm": "esp.max.s32.a q0,x8",
+      "class": "XESPV",
+      "match": "2020905f",
+      "mask": "fcf7f87f"
+    },
+    {
+      "asm": "esp.max.s8.a q0,x8",
+      "class": "XESPV",
+      "match": "2000885f",
+      "mask": "fcf7f87f"
+    },
+    {
+      "asm": "esp.max.u16.a q0,x8",
+      "class": "XESPV",
+      "match": "2000905f",
+      "mask": "fcf7f87f"
+    },
+    {
+      "asm": "esp.max.u32.a q0,x8",
+      "class": "XESPV",
+      "match": "2020805f",
+      "mask": "fcf7f87f"
+    },
+    {
+      "asm": "esp.max.u8.a q0,x8",
+      "class": "XESPV",
+      "match": "2000805f",
+      "mask": "fcf7f87f"
+    },
+    {
+      "asm": "esp.min.s16.a q0,x8",
+      "class": "XESPV",
+      "match": "2010985f",
+      "mask": "fcf7f87f"
+    },
+    {
+      "asm": "esp.min.s32.a q0,x8",
+      "class": "XESPV",
+      "match": "2020985f",
+      "mask": "fcf7f87f"
+    },
+    {
+      "asm": "esp.min.s8.a q0,x8",
+      "class": "XESPV",
+      "match": "2010885f",
+      "mask": "fcf7f87f"
+    },
+    {
+      "asm": "esp.min.u16.a q0,x8",
+      "class": "XESPV",
+      "match": "2010905f",
+      "mask": "fcf7f87f"
+    },
+    {
+      "asm": "esp.min.u32.a q0,x8",
+      "class": "XESPV",
+      "match": "2020885f",
+      "mask": "fcf7f87f"
+    },
+    {
+      "asm": "esp.min.u8.a q0,x8",
+      "class": "XESPV",
+      "match": "2010805f",
+      "mask": "fcf7f87f"
+    },
+    {
+      "asm": "esp.vabs.16 q0,q0",
+      "class": "XESPV",
+      "match": "6288fc3f",
+      "mask": "e38fffff"
+    },
+    {
+      "asm": "esp.vabs.32 q0,q0",
+      "class": "XESPV",
+      "match": "6208fcbf",
+      "mask": "e38fffff"
+    },
+    {
+      "asm": "esp.vabs.8 q0,q0",
+      "class": "XESPV",
+      "match": "6208fc3f",
+      "mask": "e38fffff"
+    },
+    {
+      "asm": "esp.vadd.s16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "030963bf",
+      "mask": "038fffff"
+    },
+    {
+      "asm": "esp.vadd.s16 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0309633f",
+      "mask": "038fff7f"
+    },
+    {
+      "asm": "esp.vadd.s16.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0188413f",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vadd.s16.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0180413f",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vadd.s16.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0388413f",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vadd.s16.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0380413f",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vadd.s32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "038966bf",
+      "mask": "038fffff"
+    },
+    {
+      "asm": "esp.vadd.s32 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "038964bf",
+      "mask": "038ffdff"
+    },
+    {
+      "asm": "esp.vadd.s32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "000861bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vadd.s32.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0008613f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vadd.s32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "000863bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vadd.s32.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0008633f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vadd.s8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "030961bf",
+      "mask": "038fffff"
+    },
+    {
+      "asm": "esp.vadd.s8 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0309613f",
+      "mask": "038fff7f"
+    },
+    {
+      "asm": "esp.vadd.s8.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0088413f",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vadd.s8.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0080413f",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vadd.s8.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0288413f",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vadd.s8.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0280413f",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vadd.u16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "030962bf",
+      "mask": "038fffff"
+    },
+    {
+      "asm": "esp.vadd.u16 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0309623f",
+      "mask": "038fff7f"
+    },
+    {
+      "asm": "esp.vadd.u16.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0108413f",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vadd.u16.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0100413f",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vadd.u16.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0308413f",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vadd.u16.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0300413f",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vadd.u32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "030966bf",
+      "mask": "038fffff"
+    },
+    {
+      "asm": "esp.vadd.u32 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "030964bf",
+      "mask": "038ffdff"
+    },
+    {
+      "asm": "esp.vadd.u32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "000860bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vadd.u32.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0008603f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vadd.u32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "000862bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vadd.u32.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0008623f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vadd.u8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "030960bf",
+      "mask": "038fffff"
+    },
+    {
+      "asm": "esp.vadd.u8 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0309603f",
+      "mask": "038fff7f"
+    },
+    {
+      "asm": "esp.vadd.u8.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0008413f",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vadd.u8.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0000413f",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vadd.u8.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0208413f",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vadd.u8.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0200413f",
+      "mask": "038063ff"
+    },
+    {
+      "asm": "esp.vclamp.s16 q0,q0,0",
+      "class": "XESPV",
+      "match": "0339683f",
+      "mask": "037ffc7f"
+    },
+    {
+      "asm": "esp.vmax.s16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03d9683f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmax.s16.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "00b8603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmax.s16.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "00f8603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmax.s32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03896c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmax.s32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0158603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmax.s32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "01d8603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmax.s8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0359683f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmax.s8.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0098603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmax.s8.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "00d8603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmax.u16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0399683f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmax.u16.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "00a8603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmax.u16.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "00e8603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmax.u32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03096c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmax.u32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0118603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmax.u32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0198603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmax.u8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0319683f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmax.u8.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0088603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmax.u8.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "00c8603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmin.s16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03e9683f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmin.s16.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0130603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmin.s16.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0170603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmin.s32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03996c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmin.s32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0168603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmin.s32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "01e8603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmin.s8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0369683f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmin.s8.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0110603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmin.s8.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0150603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmin.u16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03a9683f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmin.u16.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0120603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmin.u16.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0160603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmin.u32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03196c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmin.u32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0128603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmin.u32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "01a8603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmin.u8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0329683f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmin.u8.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0100603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmin.u8.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0140603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmul.s16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03f8783f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmul.s16 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "03d8783f",
+      "mask": "03dffc7f"
+    },
+    {
+      "asm": "esp.vmul.s16 q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "03e8603f",
+      "mask": "03efe47f"
+    },
+    {
+      "asm": "esp.vmul.s16 q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "03c8603f",
+      "mask": "03cfe47f"
+    },
+    {
+      "asm": "esp.vmul.s16.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "01f8003f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmul.s16.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "01b8003f",
+      "mask": "03b8607f"
+    },
+    {
+      "asm": "esp.vmul.s16.ld.incp q0,x8,q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "01c0003f",
+      "mask": "03c0607f"
+    },
+    {
+      "asm": "esp.vmul.s16.ld.incp q0,x8,q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0180003f",
+      "mask": "0380607f"
+    },
+    {
+      "asm": "esp.vmul.s16.s8xs8 q0,q0,q0,q0",
+      "class": "XESPV",
+      "match": "03887c3f",
+      "mask": "038ffc7f"
+    },
+    {
+      "asm": "esp.vmul.s16.s8xs8 q0,q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0308643f",
+      "mask": "030fe47f"
+    },
+    {
+      "asm": "esp.vmul.s16.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "03f8003f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmul.s16.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "03b8003f",
+      "mask": "03b8607f"
+    },
+    {
+      "asm": "esp.vmul.s16.st.incp q0,x8,q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "03c0003f",
+      "mask": "03c0607f"
+    },
+    {
+      "asm": "esp.vmul.s16.st.incp q0,x8,q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0380003f",
+      "mask": "0380607f"
+    },
+    {
+      "asm": "esp.vmul.s32.s16xs16 q0,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0388f83f",
+      "mask": "038ffc7f"
+    },
+    {
+      "asm": "esp.vmul.s32.s16xs16 q0,q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0308e03f",
+      "mask": "030fe47f"
+    },
+    {
+      "asm": "esp.vmul.s8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0378783f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmul.s8 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0358783f",
+      "mask": "03dffc7f"
+    },
+    {
+      "asm": "esp.vmul.s8 q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0368603f",
+      "mask": "03efe47f"
+    },
+    {
+      "asm": "esp.vmul.s8 q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0348603f",
+      "mask": "03cfe47f"
+    },
+    {
+      "asm": "esp.vmul.s8.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "00f8003f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmul.s8.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "00b8003f",
+      "mask": "03b8607f"
+    },
+    {
+      "asm": "esp.vmul.s8.ld.incp q0,x8,q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "00c0003f",
+      "mask": "03c0607f"
+    },
+    {
+      "asm": "esp.vmul.s8.ld.incp q0,x8,q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0080003f",
+      "mask": "0380607f"
+    },
+    {
+      "asm": "esp.vmul.s8.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "02f8003f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmul.s8.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "02b8003f",
+      "mask": "03b8607f"
+    },
+    {
+      "asm": "esp.vmul.s8.st.incp q0,x8,q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "02c0003f",
+      "mask": "03c0607f"
+    },
+    {
+      "asm": "esp.vmul.s8.st.incp q0,x8,q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0280003f",
+      "mask": "0380607f"
+    },
+    {
+      "asm": "esp.vmul.u16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03b8783f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmul.u16 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0398783f",
+      "mask": "03dffc7f"
+    },
+    {
+      "asm": "esp.vmul.u16 q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "03a8603f",
+      "mask": "03efe47f"
+    },
+    {
+      "asm": "esp.vmul.u16 q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0388603f",
+      "mask": "03cfe47f"
+    },
+    {
+      "asm": "esp.vmul.u16.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0178003f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmul.u16.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0138003f",
+      "mask": "03b8607f"
+    },
+    {
+      "asm": "esp.vmul.u16.ld.incp q0,x8,q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0140003f",
+      "mask": "03c0607f"
+    },
+    {
+      "asm": "esp.vmul.u16.ld.incp q0,x8,q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0100003f",
+      "mask": "0380607f"
+    },
+    {
+      "asm": "esp.vmul.u16.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0378003f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmul.u16.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0338003f",
+      "mask": "03b8607f"
+    },
+    {
+      "asm": "esp.vmul.u16.st.incp q0,x8,q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0340003f",
+      "mask": "03c0607f"
+    },
+    {
+      "asm": "esp.vmul.u16.st.incp q0,x8,q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0300003f",
+      "mask": "0380607f"
+    },
+    {
+      "asm": "esp.vmul.u8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0338783f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vmul.u8 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0318783f",
+      "mask": "03dffc7f"
+    },
+    {
+      "asm": "esp.vmul.u8 q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0328603f",
+      "mask": "03efe47f"
+    },
+    {
+      "asm": "esp.vmul.u8 q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0308603f",
+      "mask": "03cfe47f"
+    },
+    {
+      "asm": "esp.vmul.u8.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0078003f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmul.u8.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0038003f",
+      "mask": "03b8607f"
+    },
+    {
+      "asm": "esp.vmul.u8.ld.incp q0,x8,q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0040003f",
+      "mask": "03c0607f"
+    },
+    {
+      "asm": "esp.vmul.u8.ld.incp q0,x8,q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0000003f",
+      "mask": "0380607f"
+    },
+    {
+      "asm": "esp.vmul.u8.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0278003f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vmul.u8.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0238003f",
+      "mask": "03b8607f"
+    },
+    {
+      "asm": "esp.vmul.u8.st.incp q0,x8,q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0240003f",
+      "mask": "03c0607f"
+    },
+    {
+      "asm": "esp.vmul.u8.st.incp q0,x8,q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0200003f",
+      "mask": "0380607f"
+    },
+    {
+      "asm": "esp.vprelu.s16 q0,q0,q0,x8",
+      "class": "XESPV",
+      "match": "01f87c3f",
+      "mask": "03f87c7f"
+    },
+    {
+      "asm": "esp.vprelu.s16 q0,q0,q0,x8,sat",
+      "class": "XESPV",
+      "match": "01b87c3f",
+      "mask": "03b87c7f"
+    },
+    {
+      "asm": "esp.vprelu.s16 q0,q0,q0,x8,dyn",
+      "class": "XESPV",
+      "match": "01f8603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vprelu.s16 q0,q0,q0,x8,sat,dyn",
+      "class": "XESPV",
+      "match": "01b8603f",
+      "mask": "03b8607f"
+    },
+    {
+      "asm": "esp.vprelu.s8 q0,q0,q0,x8",
+      "class": "XESPV",
+      "match": "01787c3f",
+      "mask": "03f87c7f"
+    },
+    {
+      "asm": "esp.vprelu.s8 q0,q0,q0,x8,sat",
+      "class": "XESPV",
+      "match": "01387c3f",
+      "mask": "03b87c7f"
+    },
+    {
+      "asm": "esp.vprelu.s8 q0,q0,q0,x8,dyn",
+      "class": "XESPV",
+      "match": "0178603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vprelu.s8 q0,q0,q0,x8,sat,dyn",
+      "class": "XESPV",
+      "match": "0138603f",
+      "mask": "03b8607f"
+    },
+    {
+      "asm": "esp.vrelu.s16 q0,x8,x8",
+      "class": "XESPV",
+      "match": "22087bbf",
+      "mask": "e3087fff"
+    },
+    {
+      "asm": "esp.vrelu.s16 q0,x8,x8,sat",
+      "class": "XESPV",
+      "match": "220873bf",
+      "mask": "e30877ff"
+    },
+    {
+      "asm": "esp.vrelu.s16 q0,x8,x8,dyn",
+      "class": "XESPV",
+      "match": "2208783f",
+      "mask": "e3087c7f"
+    },
+    {
+      "asm": "esp.vrelu.s16 q0,x8,x8,sat,dyn",
+      "class": "XESPV",
+      "match": "2208703f",
+      "mask": "e308747f"
+    },
+    {
+      "asm": "esp.vrelu.s8 q0,x8,x8",
+      "class": "XESPV",
+      "match": "22086bbf",
+      "mask": "e3087fff"
+    },
+    {
+      "asm": "esp.vrelu.s8 q0,x8,x8,sat",
+      "class": "XESPV",
+      "match": "220863bf",
+      "mask": "e30877ff"
+    },
+    {
+      "asm": "esp.vrelu.s8 q0,x8,x8,dyn",
+      "class": "XESPV",
+      "match": "2208683f",
+      "mask": "e3087c7f"
+    },
+    {
+      "asm": "esp.vrelu.s8 q0,x8,x8,sat,dyn",
+      "class": "XESPV",
+      "match": "2208603f",
+      "mask": "e308747f"
+    },
+    {
+      "asm": "esp.vsadds.s16 q0,q0,x8",
+      "class": "XESPV",
+      "match": "0080435f",
+      "mask": "1f887fff"
+    },
+    {
+      "asm": "esp.vsadds.s16 q0,q0,x8,sat",
+      "class": "XESPV",
+      "match": "0080425f",
+      "mask": "1f887eff"
+    },
+    {
+      "asm": "esp.vsadds.s8 q0,q0,x8",
+      "class": "XESPV",
+      "match": "0000435f",
+      "mask": "1f887fff"
+    },
+    {
+      "asm": "esp.vsadds.s8 q0,q0,x8,sat",
+      "class": "XESPV",
+      "match": "0000425f",
+      "mask": "1f887eff"
+    },
+    {
+      "asm": "esp.vsadds.u16 q0,q0,x8",
+      "class": "XESPV",
+      "match": "0080415f",
+      "mask": "1f887fff"
+    },
+    {
+      "asm": "esp.vsadds.u16 q0,q0,x8,sat",
+      "class": "XESPV",
+      "match": "0080405f",
+      "mask": "1f887eff"
+    },
+    {
+      "asm": "esp.vsadds.u8 q0,q0,x8",
+      "class": "XESPV",
+      "match": "0000415f",
+      "mask": "1f887fff"
+    },
+    {
+      "asm": "esp.vsadds.u8 q0,q0,x8,sat",
+      "class": "XESPV",
+      "match": "0000405f",
+      "mask": "1f887eff"
+    },
+    {
+      "asm": "esp.vsat.s16 q0,q0,x8,x8",
+      "class": "XESPV",
+      "match": "1e00783f",
+      "mask": "1f087c7f"
+    },
+    {
+      "asm": "esp.vsat.s32 q0,q0,x8,x8",
+      "class": "XESPV",
+      "match": "1e00743f",
+      "mask": "1f087c7f"
+    },
+    {
+      "asm": "esp.vsat.s8 q0,q0,x8,x8",
+      "class": "XESPV",
+      "match": "1e00683f",
+      "mask": "1f087c7f"
+    },
+    {
+      "asm": "esp.vsat.u16 q0,q0,x8,x8",
+      "class": "XESPV",
+      "match": "1e00703f",
+      "mask": "1f087c7f"
+    },
+    {
+      "asm": "esp.vsat.u32 q0,q0,x8,x8",
+      "class": "XESPV",
+      "match": "1e00643f",
+      "mask": "1f087c7f"
+    },
+    {
+      "asm": "esp.vsat.u8 q0,q0,x8,x8",
+      "class": "XESPV",
+      "match": "1e00603f",
+      "mask": "1f087c7f"
+    },
+    {
+      "asm": "esp.vssubs.s16 q0,q0,x8",
+      "class": "XESPV",
+      "match": "008043df",
+      "mask": "1f887fff"
+    },
+    {
+      "asm": "esp.vssubs.s16 q0,q0,x8,sat",
+      "class": "XESPV",
+      "match": "008042df",
+      "mask": "1f887eff"
+    },
+    {
+      "asm": "esp.vssubs.s8 q0,q0,x8",
+      "class": "XESPV",
+      "match": "000043df",
+      "mask": "1f887fff"
+    },
+    {
+      "asm": "esp.vssubs.s8 q0,q0,x8,sat",
+      "class": "XESPV",
+      "match": "000042df",
+      "mask": "1f887eff"
+    },
+    {
+      "asm": "esp.vssubs.u16 q0,q0,x8",
+      "class": "XESPV",
+      "match": "008041df",
+      "mask": "1f887fff"
+    },
+    {
+      "asm": "esp.vssubs.u16 q0,q0,x8,sat",
+      "class": "XESPV",
+      "match": "008040df",
+      "mask": "1f887eff"
+    },
+    {
+      "asm": "esp.vssubs.u8 q0,q0,x8",
+      "class": "XESPV",
+      "match": "000041df",
+      "mask": "1f887fff"
+    },
+    {
+      "asm": "esp.vssubs.u8 q0,q0,x8,sat",
+      "class": "XESPV",
+      "match": "000040df",
+      "mask": "1f887eff"
+    },
+    {
+      "asm": "esp.vsub.s16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0389673f",
+      "mask": "038fffff"
+    },
+    {
+      "asm": "esp.vsub.s16 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0389663f",
+      "mask": "038ffeff"
+    },
+    {
+      "asm": "esp.vsub.s16.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "000063bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vsub.s16.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0000633f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vsub.s16.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "008063bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vsub.s16.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0080633f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vsub.s32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "038967bf",
+      "mask": "038fffff"
+    },
+    {
+      "asm": "esp.vsub.s32 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "038965bf",
+      "mask": "038ffdff"
+    },
+    {
+      "asm": "esp.vsub.s32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "018061bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vsub.s32.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0180613f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vsub.s32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "018063bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vsub.s32.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0180633f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vsub.s8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0309673f",
+      "mask": "038fffff"
+    },
+    {
+      "asm": "esp.vsub.s8 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0309663f",
+      "mask": "038ffeff"
+    },
+    {
+      "asm": "esp.vsub.s8.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "000061bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vsub.s8.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0000613f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vsub.s8.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "008061bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vsub.s8.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0080613f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vsub.u16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0389653f",
+      "mask": "038fffff"
+    },
+    {
+      "asm": "esp.vsub.u16 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0389643f",
+      "mask": "038ffeff"
+    },
+    {
+      "asm": "esp.vsub.u16.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "000062bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vsub.u16.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0000623f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vsub.u16.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "008062bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vsub.u16.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0080623f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vsub.u32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "030967bf",
+      "mask": "038fffff"
+    },
+    {
+      "asm": "esp.vsub.u32 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "030965bf",
+      "mask": "038ffdff"
+    },
+    {
+      "asm": "esp.vsub.u32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "018060bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vsub.u32.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0180603f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vsub.u32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "018062bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vsub.u32.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0180623f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vsub.u8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0309653f",
+      "mask": "038fffff"
+    },
+    {
+      "asm": "esp.vsub.u8 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0309643f",
+      "mask": "038ffeff"
+    },
+    {
+      "asm": "esp.vsub.u8.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "000060bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vsub.u8.ld.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0000603f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.vsub.u8.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "008060bf",
+      "mask": "038863ff"
+    },
+    {
+      "asm": "esp.vsub.u8.st.incp q0,x8,q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0080603f",
+      "mask": "0388637f"
+    },
+    {
+      "asm": "esp.andq q0,q0,q0",
+      "class": "XESPV",
+      "match": "0389683f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.notq q0,q0",
+      "class": "XESPV",
+      "match": "03c9683f",
+      "mask": "1ffffc7f"
+    },
+    {
+      "asm": "esp.orq q0,q0,q0",
+      "class": "XESPV",
+      "match": "0309683f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.xorq q0,q0,q0",
+      "class": "XESPV",
+      "match": "0349683f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.eq.s16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0338ec3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.eq.s32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0399603f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.eq.s8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0318ec3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.eq.u16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0328ec3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.eq.u32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0389603f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.eq.u8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0308ec3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.gt.s16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03b8ec3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.gt.s32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03d9603f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.gt.s8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0398ec3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.gt.u16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03a8ec3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.gt.u32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03c9603f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.gt.u8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0388ec3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.lt.s16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0378ec3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.lt.s32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03b9603f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.lt.s8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0358ec3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.lt.u16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0368ec3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.lt.u32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03a9603f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vcmp.lt.u8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0348ec3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.mov.s16.qacc q0",
+      "class": "XESPV",
+      "match": "4e5e60bf",
+      "mask": "ffffe3ff"
+    },
+    {
+      "asm": "esp.mov.s8.qacc q0",
+      "class": "XESPV",
+      "match": "4e5a60bf",
+      "mask": "ffffe3ff"
+    },
+    {
+      "asm": "esp.mov.u16.qacc q0",
+      "class": "XESPV",
+      "match": "4e5c60bf",
+      "mask": "ffffe3ff"
+    },
+    {
+      "asm": "esp.mov.u8.qacc q0",
+      "class": "XESPV",
+      "match": "4e5860bf",
+      "mask": "ffffe3ff"
+    },
+    {
+      "asm": "esp.movi.16.a q0,x8,0",
+      "class": "XESPV",
+      "match": "c20c603f",
+      "mask": "e3fc607f"
+    },
+    {
+      "asm": "esp.movi.16.q q0,x8,0",
+      "class": "XESPV",
+      "match": "c218703f",
+      "mask": "e3f8707f"
+    },
+    {
+      "asm": "esp.movi.32.a q0,x8,0",
+      "class": "XESPV",
+      "match": "c228603f",
+      "mask": "e3fbe07f"
+    },
+    {
+      "asm": "esp.movi.32.f q0,f8,0",
+      "class": "XESPV",
+      "match": "c228e03f",
+      "mask": "e3fbe07f"
+    },
+    {
+      "asm": "esp.movi.32.q q0,x8,0",
+      "class": "XESPV",
+      "match": "c238603f",
+      "mask": "e3f87c7f"
+    },
+    {
+      "asm": "esp.movi.8.a q0,x8,0",
+      "class": "XESPV",
+      "match": "c208603f",
+      "mask": "e3fc607f"
+    },
+    {
+      "asm": "esp.movi.8.q q0,x8,0",
+      "class": "XESPV",
+      "match": "c218603f",
+      "mask": "e3f8707f"
+    },
+    {
+      "asm": "esp.movx.r.cfg x8",
+      "class": "XESPV",
+      "match": "4e28603f",
+      "mask": "fffff87f"
+    },
+    {
+      "asm": "esp.movx.r.fft.bit.width x8",
+      "class": "XESPV",
+      "match": "4e28683f",
+      "mask": "fffff87f"
+    },
+    {
+      "asm": "esp.movx.r.perf x8,x8",
+      "class": "XESPV",
+      "match": "4e38603f",
+      "mask": "fff8787f"
+    },
+    {
+      "asm": "esp.movx.r.sar x8",
+      "class": "XESPV",
+      "match": "4e38683f",
+      "mask": "fffff87f"
+    },
+    {
+      "asm": "esp.movx.r.sar.bytes x8",
+      "class": "XESPV",
+      "match": "4e48603f",
+      "mask": "fffff87f"
+    },
+    {
+      "asm": "esp.movx.r.xacc.h x8",
+      "class": "XESPV",
+      "match": "4e08683f",
+      "mask": "fffff87f"
+    },
+    {
+      "asm": "esp.movx.r.xacc.l x8",
+      "class": "XESPV",
+      "match": "4e08603f",
+      "mask": "fffff87f"
+    },
+    {
+      "asm": "esp.movx.w.cfg x8",
+      "class": "XESPV",
+      "match": "4e28703f",
+      "mask": "fff87fff"
+    },
+    {
+      "asm": "esp.movx.w.fft.bit.width x8",
+      "class": "XESPV",
+      "match": "4e28783f",
+      "mask": "fff87fff"
+    },
+    {
+      "asm": "esp.movx.w.perf x8",
+      "class": "XESPV",
+      "match": "4e38703f",
+      "mask": "fff87fff"
+    },
+    {
+      "asm": "esp.movx.w.sar x8",
+      "class": "XESPV",
+      "match": "4e38783f",
+      "mask": "fff87fff"
+    },
+    {
+      "asm": "esp.movx.w.sar.bytes x8",
+      "class": "XESPV",
+      "match": "4e48703f",
+      "mask": "fff87fff"
+    },
+    {
+      "asm": "esp.movx.w.xacc.h x8",
+      "class": "XESPV",
+      "match": "4e08783f",
+      "mask": "fff87fff"
+    },
+    {
+      "asm": "esp.movx.w.xacc.l x8",
+      "class": "XESPV",
+      "match": "4e08703f",
+      "mask": "fff87fff"
+    },
+    {
+      "asm": "esp.vext.s16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "2080105f",
+      "mask": "fc87fc7f"
+    },
+    {
+      "asm": "esp.vext.s8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "2000105f",
+      "mask": "fc87fc7f"
+    },
+    {
+      "asm": "esp.vext.u16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "2080005f",
+      "mask": "fc87fc7f"
+    },
+    {
+      "asm": "esp.vext.u8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "2000005f",
+      "mask": "fc87fc7f"
+    },
+    {
+      "asm": "esp.vunzip.16 q0,q0",
+      "class": "XESPV",
+      "match": "0309773f",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vunzip.32 q0,q0",
+      "class": "XESPV",
+      "match": "030976bf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vunzip.8 q0,q0",
+      "class": "XESPV",
+      "match": "0309763f",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vunzipt.16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0000395f",
+      "mask": "00f7ffff"
+    },
+    {
+      "asm": "esp.vunzipt.8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0000315f",
+      "mask": "00f7ffff"
+    },
+    {
+      "asm": "esp.vzip.16 q0,q0",
+      "class": "XESPV",
+      "match": "0309753f",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vzip.32 q0,q0",
+      "class": "XESPV",
+      "match": "030974bf",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vzip.8 q0,q0",
+      "class": "XESPV",
+      "match": "0309743f",
+      "mask": "03ffffff"
+    },
+    {
+      "asm": "esp.vzipt.16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0000295f",
+      "mask": "00f7ffff"
+    },
+    {
+      "asm": "esp.vzipt.8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0000215f",
+      "mask": "00f7ffff"
+    },
+    {
+      "asm": "esp.zero.q q0",
+      "class": "XESPV",
+      "match": "4e68603f",
+      "mask": "fffffc7f"
+    },
+    {
+      "asm": "esp.zero.qacc",
+      "class": "XESPV",
+      "match": "4e58f0bf",
+      "mask": "ffffffff"
+    },
+    {
+      "asm": "esp.zero.xacc",
+      "class": "XESPV",
+      "match": "4e58e0bf",
+      "mask": "ffffffff"
+    },
+    {
+      "asm": "esp.fft.ams.s16.ld.incp q0,x8,q0,q0,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0000407b",
+      "mask": "0000607f"
+    },
+    {
+      "asm": "esp.fft.ams.s16.ld.incp q0,x8,q0,q0,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0000007b",
+      "mask": "0000207f"
+    },
+    {
+      "asm": "esp.fft.ams.s16.ld.incp.uaup q0,x8,q0,q0,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0000607b",
+      "mask": "0000607f"
+    },
+    {
+      "asm": "esp.fft.ams.s16.ld.incp.uaup q0,x8,q0,q0,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0000207b",
+      "mask": "0000207f"
+    },
+    {
+      "asm": "esp.fft.ams.s16.ld.r32.decp q0,x8,q0,q0,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0000401f",
+      "mask": "0000607f"
+    },
+    {
+      "asm": "esp.fft.ams.s16.ld.r32.decp q0,x8,q0,q0,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0000001f",
+      "mask": "0000207f"
+    },
+    {
+      "asm": "esp.fft.ams.s16.st.incp q0,q0,x8,x8,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0000203b",
+      "mask": "0000207f"
+    },
+    {
+      "asm": "esp.fft.ams.s16.st.incp q0,q0,x8,x8,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0000003b",
+      "mask": "0000007f"
+    },
+    {
+      "asm": "esp.fft.bitrev q0,x8",
+      "class": "XESPV",
+      "match": "5e08603f",
+      "mask": "ff887fff"
+    },
+    {
+      "asm": "esp.fft.cmul.s16.ld.xp q0,x8,x8,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0200201f",
+      "mask": "0200207f"
+    },
+    {
+      "asm": "esp.fft.cmul.s16.ld.xp q0,x8,x8,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0000201f",
+      "mask": "0000207f"
+    },
+    {
+      "asm": "esp.fft.cmul.s16.st.xp q0,q0,q0,x8,x8,0,0,0",
+      "class": "XESPV",
+      "match": "0200005b",
+      "mask": "0200007f"
+    },
+    {
+      "asm": "esp.fft.cmul.s16.st.xp q0,q0,q0,x8,x8,0,0,0,sat",
+      "class": "XESPV",
+      "match": "0000005b",
+      "mask": "0000007f"
+    },
+    {
+      "asm": "esp.fft.r2bf.s16 q0,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0308f43f",
+      "mask": "030ffc7f"
+    },
+    {
+      "asm": "esp.fft.r2bf.s16 q0,q0,q0,q0,0,sat",
+      "class": "XESPV",
+      "match": "0308e43f",
+      "mask": "030fec7f"
+    },
+    {
+      "asm": "esp.fft.r2bf.s16.st.incp q0,q0,q0,x8,0",
+      "class": "XESPV",
+      "match": "0370703f",
+      "mask": "03f8707f"
+    },
+    {
+      "asm": "esp.fft.r2bf.s16.st.incp q0,q0,q0,x8,0,sat",
+      "class": "XESPV",
+      "match": "0370603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.fft.vst.r32.decp q0,x8,0",
+      "class": "XESPV",
+      "match": "4e58603f",
+      "mask": "fff861ff"
+    },
+    {
+      "asm": "esp.qacc.16.rsf q0,q0,0",
+      "class": "XESPV",
+      "match": "0b19703f",
+      "mask": "1f7ffc7f"
+    },
+    {
+      "asm": "esp.qacc.8.rsf q0,q0,0",
+      "class": "XESPV",
+      "match": "0b09703f",
+      "mask": "1f3ffc7f"
+    },
+    {
+      "asm": "esp.qacc.fcvt.16",
+      "class": "XESPV",
+      "match": "4e58e4bf",
+      "mask": "ffffffff"
+    },
+    {
+      "asm": "esp.vfadd.f32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03b96c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vfadd.f32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0310603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vfadd.f32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0390603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vfadd.f32.vf q0,q0,f8",
+      "class": "XESPV",
+      "match": "0309703f",
+      "mask": "1f0ffc7f"
+    },
+    {
+      "asm": "esp.vfadd.f32.vf.ld.incp q0,x8,q0,q0,f8",
+      "class": "XESPV",
+      "match": "0200603f",
+      "mask": "1f08607f"
+    },
+    {
+      "asm": "esp.vfadd.f32.vf.st.incp q0,x8,q0,q0,f8",
+      "class": "XESPV",
+      "match": "1200603f",
+      "mask": "1f08607f"
+    },
+    {
+      "asm": "esp.vfcmul.rvf q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0379683f",
+      "mask": "037ffc7f"
+    },
+    {
+      "asm": "esp.vfcmul.rvf.ld.incp q0,x8,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0108603f",
+      "mask": "03b8607f"
+    },
+    {
+      "asm": "esp.vfcmul.rvf.st.incp q0,x8,q0,q0,q0,0",
+      "class": "XESPV",
+      "match": "0188603f",
+      "mask": "03b8607f"
+    },
+    {
+      "asm": "esp.vfcmul.s1.f32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03496c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vfcmul.s1.f32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0320603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vfcmul.s1.f32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "03a0603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vfcmul.s2.f32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0000255f",
+      "mask": "00f7ffff"
+    },
+    {
+      "asm": "esp.vfcmul.s2.f32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0000205f",
+      "mask": "00f063ff"
+    },
+    {
+      "asm": "esp.vfcmul.s2.f32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0000225f",
+      "mask": "00f063ff"
+    },
+    {
+      "asm": "esp.vfeq.f32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03c96c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vfle.f32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03596c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vflt.f32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03d96c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vfmacc.f32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "00002d5f",
+      "mask": "00f7ffff"
+    },
+    {
+      "asm": "esp.vfmacc.f32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "000020df",
+      "mask": "00f063ff"
+    },
+    {
+      "asm": "esp.vfmacc.f32.ld.xp q0,x8,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "000040bf",
+      "mask": "000063ff"
+    },
+    {
+      "asm": "esp.vfmacc.f32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "000022df",
+      "mask": "00f063ff"
+    },
+    {
+      "asm": "esp.vfmacc.f32.st.xp q0,x8,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "000042bf",
+      "mask": "000063ff"
+    },
+    {
+      "asm": "esp.vfmacc.f32.vf q0,q0,f8",
+      "class": "XESPV",
+      "match": "000005df",
+      "mask": "e007ffff"
+    },
+    {
+      "asm": "esp.vfmacc.f32.vf.ld.incp q0,x8,q0,q0,f8",
+      "class": "XESPV",
+      "match": "000000df",
+      "mask": "e00063ff"
+    },
+    {
+      "asm": "esp.vfmacc.f32.vf.st.incp q0,x8,q0,q0,f8",
+      "class": "XESPV",
+      "match": "000002df",
+      "mask": "e00063ff"
+    },
+    {
+      "asm": "esp.vfmax.f32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03696c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vfmax.f32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0330603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vfmax.f32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "03b0603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vfmin.f32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03e96c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vfmin.f32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0340603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vfmin.f32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "03c0603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vfmul.f32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03796c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vfmul.f32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0350603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vfmul.f32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "03d0603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vfmul.f32.vf q0,q0,f8",
+      "class": "XESPV",
+      "match": "6208e83f",
+      "mask": "e30ffc7f"
+    },
+    {
+      "asm": "esp.vfmul.f32.vf.ld.incp q0,x8,q0,q0,f8",
+      "class": "XESPV",
+      "match": "0208603f",
+      "mask": "e308607f"
+    },
+    {
+      "asm": "esp.vfmul.f32.vf.st.incp q0,x8,q0,q0,f8",
+      "class": "XESPV",
+      "match": "8208603f",
+      "mask": "e308607f"
+    },
+    {
+      "asm": "esp.vfmul.vf.16 q0,q0,x8,0",
+      "class": "XESPV",
+      "match": "6208e03f",
+      "mask": "e30fec7f"
+    },
+    {
+      "asm": "esp.vfmul.vf.32 q0,q0,x8",
+      "class": "XESPV",
+      "match": "6208f83f",
+      "mask": "e30ffc7f"
+    },
+    {
+      "asm": "esp.vfmul.vf.8 q0,q0,x8,0",
+      "class": "XESPV",
+      "match": "6208603f",
+      "mask": "e30fe47f"
+    },
+    {
+      "asm": "esp.vfmul.vr.16 q0,q0,f8,0",
+      "class": "XESPV",
+      "match": "6208e43f",
+      "mask": "e30fec7f"
+    },
+    {
+      "asm": "esp.vfmul.vr.32 q0,q0,f8",
+      "class": "XESPV",
+      "match": "6208ec3f",
+      "mask": "e30ffc7f"
+    },
+    {
+      "asm": "esp.vfmul.vr.8 q0,q0,f8,0",
+      "class": "XESPV",
+      "match": "6208643f",
+      "mask": "e30fe47f"
+    },
+    {
+      "asm": "esp.vfsub.f32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "03f96c3f",
+      "mask": "03fffc7f"
+    },
+    {
+      "asm": "esp.vfsub.f32.ld.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "0360603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vfsub.f32.st.incp q0,x8,q0,q0,q0",
+      "class": "XESPV",
+      "match": "03e0603f",
+      "mask": "03f8607f"
+    },
+    {
+      "asm": "esp.vfsub.f32.vf q0,q0,f8",
+      "class": "XESPV",
+      "match": "0709703f",
+      "mask": "1f0ffc7f"
+    },
+    {
+      "asm": "esp.vfsub.f32.vf.ld.incp q0,x8,q0,q0,f8",
+      "class": "XESPV",
+      "match": "0600603f",
+      "mask": "1f08607f"
+    },
+    {
+      "asm": "esp.vfsub.f32.vf.st.incp q0,x8,q0,q0,f8",
+      "class": "XESPV",
+      "match": "1600603f",
+      "mask": "1f08607f"
+    },
+    {
+      "asm": "esp.xacc.fcvt.16",
+      "class": "XESPV",
+      "match": "4e58f4bf",
+      "mask": "ffffffff"
+    },
+    {
+      "asm": "esp.xacc.rsf.16 f8",
+      "class": "XESPV",
+      "match": "5e0860bf",
+      "mask": "ff0fffff"
+    },
+    {
+      "asm": "esp.xacc.rsf.8 f8",
+      "class": "XESPV",
+      "match": "5e08e0bf",
+      "mask": "ff0fffff"
+    },
+    {
+      "asm": "esp.ld.128.usar.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "a208603f",
+      "mask": "ef08607f"
+    },
+    {
+      "asm": "esp.ld.128.usar.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "5a08613f",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.ld.xacc.ip x8,0",
+      "class": "XESPV",
+      "match": "4a0860bf",
+      "mask": "ff0861ff"
+    },
+    {
+      "asm": "esp.ldqa.s16.128.ip x8,0",
+      "class": "XESPV",
+      "match": "3a08743f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.ldqa.s16.128.xp x8,x8",
+      "class": "XESPV",
+      "match": "5a087bbf",
+      "mask": "ff087fff"
+    },
+    {
+      "asm": "esp.ldqa.s8.128.ip x8,0",
+      "class": "XESPV",
+      "match": "2a08743f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.ldqa.s8.128.xp x8,x8",
+      "class": "XESPV",
+      "match": "5a086bbf",
+      "mask": "ff087fff"
+    },
+    {
+      "asm": "esp.ldqa.u16.128.ip x8,0",
+      "class": "XESPV",
+      "match": "3208743f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.ldqa.u16.128.xp x8,x8",
+      "class": "XESPV",
+      "match": "5a0873bf",
+      "mask": "ff087fff"
+    },
+    {
+      "asm": "esp.ldqa.u8.128.ip x8,0",
+      "class": "XESPV",
+      "match": "2208743f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.ldqa.u8.128.xp x8,x8",
+      "class": "XESPV",
+      "match": "5a0863bf",
+      "mask": "ff087fff"
+    },
+    {
+      "asm": "esp.vldbc.16.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "aa08603f",
+      "mask": "ef08607f"
+    },
+    {
+      "asm": "esp.vldbc.16.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "5a0862bf",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.vldbc.32.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "ae08603f",
+      "mask": "ef08607f"
+    },
+    {
+      "asm": "esp.vldbc.32.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "5a0861bf",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.vldbc.8.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "4208603f",
+      "mask": "ef08607f"
+    },
+    {
+      "asm": "esp.vldbc.8.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "5a0860bf",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.vldext.s16.ip q0,q0,x8,0",
+      "class": "XESPV",
+      "match": "ce00603f",
+      "mask": "ff08607f"
+    },
+    {
+      "asm": "esp.vldext.s16.xp q0,q0,x8,x8",
+      "class": "XESPV",
+      "match": "ee00603f",
+      "mask": "ff08607f"
+    },
+    {
+      "asm": "esp.vldext.s8.ip q0,q0,x8,0",
+      "class": "XESPV",
+      "match": "4e00603f",
+      "mask": "ff08607f"
+    },
+    {
+      "asm": "esp.vldext.s8.xp q0,q0,x8,x8",
+      "class": "XESPV",
+      "match": "6e00603f",
+      "mask": "ff08607f"
+    },
+    {
+      "asm": "esp.vldext.u16.ip q0,q0,x8,0",
+      "class": "XESPV",
+      "match": "8e00603f",
+      "mask": "ff08607f"
+    },
+    {
+      "asm": "esp.vldext.u16.xp q0,q0,x8,x8",
+      "class": "XESPV",
+      "match": "ae00603f",
+      "mask": "ff08607f"
+    },
+    {
+      "asm": "esp.vldext.u8.ip q0,q0,x8,0",
+      "class": "XESPV",
+      "match": "0e00603f",
+      "mask": "ff08607f"
+    },
+    {
+      "asm": "esp.vldext.u8.xp q0,q0,x8,x8",
+      "class": "XESPV",
+      "match": "2e00603f",
+      "mask": "ff08607f"
+    },
+    {
+      "asm": "esp.vldhbc.16.incp q0,q0,x8",
+      "class": "XESPV",
+      "match": "4e18603f",
+      "mask": "fff8607f"
+    },
+    {
+      "asm": "esp.ld.qacc.h.h.128.ip x8,0",
+      "class": "XESPV",
+      "match": "5e006c3f",
+      "mask": "df087c7f"
+    },
+    {
+      "asm": "esp.ld.qacc.h.l.128.ip x8,0",
+      "class": "XESPV",
+      "match": "2a08643f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.ld.qacc.l.h.128.ip x8,0",
+      "class": "XESPV",
+      "match": "1e006c3f",
+      "mask": "df087c7f"
+    },
+    {
+      "asm": "esp.ld.qacc.l.l.128.ip x8,0",
+      "class": "XESPV",
+      "match": "2208643f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.ld.ua.state.ip x8,0",
+      "class": "XESPV",
+      "match": "4608603f",
+      "mask": "ff98607f"
+    },
+    {
+      "asm": "esp.ldxq.32 q0,q0,x8,0,0",
+      "class": "XESPV",
+      "match": "0000005f",
+      "mask": "f00061ff"
+    },
+    {
+      "asm": "esp.st.qacc.h.h.128.ip x8,0",
+      "class": "XESPV",
+      "match": "de006c3f",
+      "mask": "df087c7f"
+    },
+    {
+      "asm": "esp.st.qacc.h.l.128.ip x8,0",
+      "class": "XESPV",
+      "match": "3a08643f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.st.qacc.l.h.128.ip x8,0",
+      "class": "XESPV",
+      "match": "9e006c3f",
+      "mask": "df087c7f"
+    },
+    {
+      "asm": "esp.st.qacc.l.l.128.ip x8,0",
+      "class": "XESPV",
+      "match": "3208643f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.st.ua.state.ip x8,0",
+      "class": "XESPV",
+      "match": "4688603f",
+      "mask": "ff98607f"
+    },
+    {
+      "asm": "esp.stxq.32 q0,q0,x8,0,0",
+      "class": "XESPV",
+      "match": "1000005f",
+      "mask": "f00061ff"
+    },
+    {
+      "asm": "esp.vld.128.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "1a00603f",
+      "mask": "bf08607f"
+    },
+    {
+      "asm": "esp.vld.128.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "4a0861bf",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.vld.16.idx q0,q0,x8",
+      "class": "XESPV",
+      "match": "0c50035f",
+      "mask": "fcf063ff"
+    },
+    {
+      "asm": "esp.vld.32.idx q0,q0,x8",
+      "class": "XESPV",
+      "match": "00d0035f",
+      "mask": "fcf063ff"
+    },
+    {
+      "asm": "esp.vld.8.idx q0,q0,x8",
+      "class": "XESPV",
+      "match": "0450035f",
+      "mask": "fcf063ff"
+    },
+    {
+      "asm": "esp.vld.h.64.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "4a00603f",
+      "mask": "df08607f"
+    },
+    {
+      "asm": "esp.vld.h.64.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "4a08613f",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.vld.l.64.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "0a00603f",
+      "mask": "df08607f"
+    },
+    {
+      "asm": "esp.vld.l.64.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "4a08603f",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.vst.128.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "9a00603f",
+      "mask": "bf08607f"
+    },
+    {
+      "asm": "esp.vst.128.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "4a0863bf",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.vst.16.idx q0,q0,x8",
+      "class": "XESPV",
+      "match": "1c50035f",
+      "mask": "fcf063ff"
+    },
+    {
+      "asm": "esp.vst.32.idx q0,q0,x8",
+      "class": "XESPV",
+      "match": "10d0035f",
+      "mask": "fcf063ff"
+    },
+    {
+      "asm": "esp.vst.8.idx q0,q0,x8",
+      "class": "XESPV",
+      "match": "1450035f",
+      "mask": "fcf063ff"
+    },
+    {
+      "asm": "esp.vst.h.64.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "ca00603f",
+      "mask": "df08607f"
+    },
+    {
+      "asm": "esp.vst.h.64.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "4a08633f",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.vst.l.64.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "8a00603f",
+      "mask": "df08607f"
+    },
+    {
+      "asm": "esp.vst.l.64.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "4a08623f",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.ld.qacc.h.h.256.ip x8,0",
+      "class": "XESPV",
+      "match": "5e007c3f",
+      "mask": "df087c7f"
+    },
+    {
+      "asm": "esp.ld.qacc.h.l.256.ip x8,0",
+      "class": "XESPV",
+      "match": "2a086c3f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.ld.qacc.l.h.256.ip x8,0",
+      "class": "XESPV",
+      "match": "1e007c3f",
+      "mask": "df087c7f"
+    },
+    {
+      "asm": "esp.ld.qacc.l.l.256.ip x8,0",
+      "class": "XESPV",
+      "match": "22086c3f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.st.qacc.h.h.256.ip x8,0",
+      "class": "XESPV",
+      "match": "de007c3f",
+      "mask": "df087c7f"
+    },
+    {
+      "asm": "esp.st.qacc.h.l.256.ip x8,0",
+      "class": "XESPV",
+      "match": "3a086c3f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.st.qacc.l.h.256.ip x8,0",
+      "class": "XESPV",
+      "match": "9e007c3f",
+      "mask": "df087c7f"
+    },
+    {
+      "asm": "esp.st.qacc.l.l.256.ip x8,0",
+      "class": "XESPV",
+      "match": "32086c3f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.vld.256.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "3a00603f",
+      "mask": "bf08607f"
+    },
+    {
+      "asm": "esp.vld.256.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "5a08603f",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.vst.256.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "ba00603f",
+      "mask": "bf08607f"
+    },
+    {
+      "asm": "esp.vst.256.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "5a08623f",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.ld.256.usar.ip q0,x8,0",
+      "class": "XESPV",
+      "match": "a608603f",
+      "mask": "ef08607f"
+    },
+    {
+      "asm": "esp.ld.256.usar.xp q0,x8,x8",
+      "class": "XESPV",
+      "match": "5a08633f",
+      "mask": "ff0863ff"
+    },
+    {
+      "asm": "esp.ldqa.s16.256.ip x8,0",
+      "class": "XESPV",
+      "match": "3a087c3f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.ldqa.s16.256.xp x8,x8",
+      "class": "XESPV",
+      "match": "5a087fbf",
+      "mask": "ff087fff"
+    },
+    {
+      "asm": "esp.ldqa.s8.256.ip x8,0",
+      "class": "XESPV",
+      "match": "2a087c3f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.ldqa.s8.256.xp x8,x8",
+      "class": "XESPV",
+      "match": "5a086fbf",
+      "mask": "ff087fff"
+    },
+    {
+      "asm": "esp.ldqa.u16.256.ip x8,0",
+      "class": "XESPV",
+      "match": "32087c3f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.ldqa.u16.256.xp x8,x8",
+      "class": "XESPV",
+      "match": "5a0877bf",
+      "mask": "ff087fff"
+    },
+    {
+      "asm": "esp.ldqa.u8.256.ip x8,0",
+      "class": "XESPV",
+      "match": "22087c3f",
+      "mask": "fb087c7f"
+    },
+    {
+      "asm": "esp.ldqa.u8.256.xp x8,x8",
+      "class": "XESPV",
+      "match": "5a0867bf",
+      "mask": "ff087fff"
+    },
+    {
+      "asm": "esp.slci.2q q0,q0,0",
+      "class": "XESPV",
+      "match": "0020035f",
+      "mask": "e0f5e3ff"
+    },
+    {
+      "asm": "esp.slcxxp.2q q0,q0,x8,x8",
+      "class": "XESPV",
+      "match": "000001df",
+      "mask": "e0007fff"
+    },
+    {
+      "asm": "esp.src.q q0,q0,q0",
+      "class": "XESPV",
+      "match": "4000005f",
+      "mask": "e0f7fc7f"
+    },
+    {
+      "asm": "esp.src.q.ld.ip q0,x8,0,q0,q0",
+      "class": "XESPV",
+      "match": "0000403f",
+      "mask": "000061ff"
+    },
+    {
+      "asm": "esp.src.q.ld.xp q0,x8,x8,q0,q0",
+      "class": "XESPV",
+      "match": "0000015f",
+      "mask": "e00063ff"
+    },
+    {
+      "asm": "esp.src.q.qup q0,q0,q0",
+      "class": "XESPV",
+      "match": "4000045f",
+      "mask": "e0f7fc7f"
+    },
+    {
+      "asm": "esp.srci.2q q0,q0,0",
+      "class": "XESPV",
+      "match": "0024035f",
+      "mask": "e0f5e3ff"
+    },
+    {
+      "asm": "esp.srcmb.s16.q.qacc q0,q0",
+      "class": "XESPV",
+      "match": "1857835f",
+      "mask": "fcf7e3ff"
+    },
+    {
+      "asm": "esp.srcmb.s16.q.qacc q0,q0,sat",
+      "class": "XESPV",
+      "match": "1853835f",
+      "mask": "fcf3e3ff"
+    },
+    {
+      "asm": "esp.srcmb.s16.q.qacc q0,q0,dyn",
+      "class": "XESPV",
+      "match": "1854035f",
+      "mask": "fcf463ff"
+    },
+    {
+      "asm": "esp.srcmb.s16.q.qacc q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "1850035f",
+      "mask": "fcf063ff"
+    },
+    {
+      "asm": "esp.srcmb.s16.qacc q0,x8",
+      "class": "XESPV",
+      "match": "46f863bf",
+      "mask": "fff863ff"
+    },
+    {
+      "asm": "esp.srcmb.s16.qacc q0,x8,sat",
+      "class": "XESPV",
+      "match": "46d863bf",
+      "mask": "ffd863ff"
+    },
+    {
+      "asm": "esp.srcmb.s16.qacc q0,x8,dyn",
+      "class": "XESPV",
+      "match": "46f8603f",
+      "mask": "fff8607f"
+    },
+    {
+      "asm": "esp.srcmb.s16.qacc q0,x8,sat,dyn",
+      "class": "XESPV",
+      "match": "46d8603f",
+      "mask": "ffd8607f"
+    },
+    {
+      "asm": "esp.srcmb.s8.q.qacc q0,q0",
+      "class": "XESPV",
+      "match": "0857835f",
+      "mask": "fcf7e3ff"
+    },
+    {
+      "asm": "esp.srcmb.s8.q.qacc q0,q0,sat",
+      "class": "XESPV",
+      "match": "0853835f",
+      "mask": "fcf3e3ff"
+    },
+    {
+      "asm": "esp.srcmb.s8.q.qacc q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0854035f",
+      "mask": "fcf463ff"
+    },
+    {
+      "asm": "esp.srcmb.s8.q.qacc q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0850035f",
+      "mask": "fcf063ff"
+    },
+    {
+      "asm": "esp.srcmb.s8.qacc q0,x8",
+      "class": "XESPV",
+      "match": "467863bf",
+      "mask": "fff863ff"
+    },
+    {
+      "asm": "esp.srcmb.s8.qacc q0,x8,sat",
+      "class": "XESPV",
+      "match": "465863bf",
+      "mask": "ffd863ff"
+    },
+    {
+      "asm": "esp.srcmb.s8.qacc q0,x8,dyn",
+      "class": "XESPV",
+      "match": "4678603f",
+      "mask": "fff8607f"
+    },
+    {
+      "asm": "esp.srcmb.s8.qacc q0,x8,sat,dyn",
+      "class": "XESPV",
+      "match": "4658603f",
+      "mask": "ffd8607f"
+    },
+    {
+      "asm": "esp.srcmb.u16.q.qacc q0,q0",
+      "class": "XESPV",
+      "match": "1057835f",
+      "mask": "fcf7e3ff"
+    },
+    {
+      "asm": "esp.srcmb.u16.q.qacc q0,q0,sat",
+      "class": "XESPV",
+      "match": "1053835f",
+      "mask": "fcf3e3ff"
+    },
+    {
+      "asm": "esp.srcmb.u16.q.qacc q0,q0,dyn",
+      "class": "XESPV",
+      "match": "1054035f",
+      "mask": "fcf463ff"
+    },
+    {
+      "asm": "esp.srcmb.u16.q.qacc q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "1050035f",
+      "mask": "fcf063ff"
+    },
+    {
+      "asm": "esp.srcmb.u16.qacc q0,x8",
+      "class": "XESPV",
+      "match": "46b863bf",
+      "mask": "fff863ff"
+    },
+    {
+      "asm": "esp.srcmb.u16.qacc q0,x8,sat",
+      "class": "XESPV",
+      "match": "469863bf",
+      "mask": "ffd863ff"
+    },
+    {
+      "asm": "esp.srcmb.u16.qacc q0,x8,dyn",
+      "class": "XESPV",
+      "match": "46b8603f",
+      "mask": "fff8607f"
+    },
+    {
+      "asm": "esp.srcmb.u16.qacc q0,x8,sat,dyn",
+      "class": "XESPV",
+      "match": "4698603f",
+      "mask": "ffd8607f"
+    },
+    {
+      "asm": "esp.srcmb.u8.q.qacc q0,q0",
+      "class": "XESPV",
+      "match": "0057835f",
+      "mask": "fcf7e3ff"
+    },
+    {
+      "asm": "esp.srcmb.u8.q.qacc q0,q0,sat",
+      "class": "XESPV",
+      "match": "0053835f",
+      "mask": "fcf3e3ff"
+    },
+    {
+      "asm": "esp.srcmb.u8.q.qacc q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0054035f",
+      "mask": "fcf463ff"
+    },
+    {
+      "asm": "esp.srcmb.u8.q.qacc q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0050035f",
+      "mask": "fcf063ff"
+    },
+    {
+      "asm": "esp.srcmb.u8.qacc q0,x8",
+      "class": "XESPV",
+      "match": "463863bf",
+      "mask": "fff863ff"
+    },
+    {
+      "asm": "esp.srcmb.u8.qacc q0,x8,sat",
+      "class": "XESPV",
+      "match": "461863bf",
+      "mask": "ffd863ff"
+    },
+    {
+      "asm": "esp.srcmb.u8.qacc q0,x8,dyn",
+      "class": "XESPV",
+      "match": "4638603f",
+      "mask": "fff8607f"
+    },
+    {
+      "asm": "esp.srcmb.u8.qacc q0,x8,sat,dyn",
+      "class": "XESPV",
+      "match": "4618603f",
+      "mask": "ffd8607f"
+    },
+    {
+      "asm": "esp.srcq.128.st.incp q0,q0,x8",
+      "class": "XESPV",
+      "match": "0060035f",
+      "mask": "e0f07fff"
+    },
+    {
+      "asm": "esp.srcxxp.2q q0,q0,x8,x8",
+      "class": "XESPV",
+      "match": "000011df",
+      "mask": "e0007fff"
+    },
+    {
+      "asm": "esp.srs.s.xacc x8,x8",
+      "class": "XESPV",
+      "match": "56e8783f",
+      "mask": "fff8787f"
+    },
+    {
+      "asm": "esp.srs.s.xacc x8,x8,sat",
+      "class": "XESPV",
+      "match": "56a8783f",
+      "mask": "ffb8787f"
+    },
+    {
+      "asm": "esp.srs.s.xacc x8,x8,dyn",
+      "class": "XESPV",
+      "match": "56c8603f",
+      "mask": "ffd8607f"
+    },
+    {
+      "asm": "esp.srs.s.xacc x8,x8,sat,dyn",
+      "class": "XESPV",
+      "match": "5688603f",
+      "mask": "ff98607f"
+    },
+    {
+      "asm": "esp.srs.u.xacc x8,x8",
+      "class": "XESPV",
+      "match": "5668783f",
+      "mask": "fff8787f"
+    },
+    {
+      "asm": "esp.srs.u.xacc x8,x8,sat",
+      "class": "XESPV",
+      "match": "5628783f",
+      "mask": "ffb8787f"
+    },
+    {
+      "asm": "esp.srs.u.xacc x8,x8,dyn",
+      "class": "XESPV",
+      "match": "5648603f",
+      "mask": "ffd8607f"
+    },
+    {
+      "asm": "esp.srs.u.xacc x8,x8,sat,dyn",
+      "class": "XESPV",
+      "match": "5608603f",
+      "mask": "ff98607f"
+    },
+    {
+      "asm": "esp.vsl.s32 q0,q0",
+      "class": "XESPV",
+      "match": "c229e33f",
+      "mask": "e3ffe3ff"
+    },
+    {
+      "asm": "esp.vsl.s32 q0,q0,sat",
+      "class": "XESPV",
+      "match": "c229e23f",
+      "mask": "e3ffe2ff"
+    },
+    {
+      "asm": "esp.vsl.u32 q0,q0",
+      "class": "XESPV",
+      "match": "c229e13f",
+      "mask": "e3ffe3ff"
+    },
+    {
+      "asm": "esp.vsl.u32 q0,q0,sat",
+      "class": "XESPV",
+      "match": "c229e03f",
+      "mask": "e3ffe2ff"
+    },
+    {
+      "asm": "esp.vsl.32 q0,q0",
+      "class": "XESPV",
+      "match": "c229e13f",
+      "mask": "e3ffe3ff"
+    },
+    {
+      "asm": "esp.vsld.16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0047835f",
+      "mask": "e0f7e3ff"
+    },
+    {
+      "asm": "esp.vsld.16 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0043835f",
+      "mask": "e0f3e3ff"
+    },
+    {
+      "asm": "esp.vsld.16 q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0044035f",
+      "mask": "e0f463ff"
+    },
+    {
+      "asm": "esp.vsld.16 q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0040035f",
+      "mask": "e0f063ff"
+    },
+    {
+      "asm": "esp.vsld.32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0017835f",
+      "mask": "e0f7e3ff"
+    },
+    {
+      "asm": "esp.vsld.32 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0013835f",
+      "mask": "e0f3e3ff"
+    },
+    {
+      "asm": "esp.vsld.32 q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0014035f",
+      "mask": "e0f463ff"
+    },
+    {
+      "asm": "esp.vsld.32 q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0010035f",
+      "mask": "e0f063ff"
+    },
+    {
+      "asm": "esp.vsld.8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0007835f",
+      "mask": "e0f7e3ff"
+    },
+    {
+      "asm": "esp.vsld.8 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0003835f",
+      "mask": "e0f3e3ff"
+    },
+    {
+      "asm": "esp.vsld.8 q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0004035f",
+      "mask": "e0f463ff"
+    },
+    {
+      "asm": "esp.vsld.8 q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0000035f",
+      "mask": "e0f063ff"
+    },
+    {
+      "asm": "esp.vsr.s32 q0,q0",
+      "class": "XESPV",
+      "match": "c22d63bf",
+      "mask": "e3ffe3ff"
+    },
+    {
+      "asm": "esp.vsr.s32 q0,q0,dyn",
+      "class": "XESPV",
+      "match": "c22d603f",
+      "mask": "e3ffe07f"
+    },
+    {
+      "asm": "esp.vsr.u32 q0,q0",
+      "class": "XESPV",
+      "match": "c22963bf",
+      "mask": "e3ffe3ff"
+    },
+    {
+      "asm": "esp.vsr.u32 q0,q0,dyn",
+      "class": "XESPV",
+      "match": "c229603f",
+      "mask": "e3ffe07f"
+    },
+    {
+      "asm": "esp.vsrd.16 q0,q0,q0",
+      "class": "XESPV",
+      "match": "00c7835f",
+      "mask": "e0f7e3ff"
+    },
+    {
+      "asm": "esp.vsrd.16 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "00c3835f",
+      "mask": "e0f3e3ff"
+    },
+    {
+      "asm": "esp.vsrd.16 q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "00c4035f",
+      "mask": "e0f463ff"
+    },
+    {
+      "asm": "esp.vsrd.16 q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "00c0035f",
+      "mask": "e0f063ff"
+    },
+    {
+      "asm": "esp.vsrd.32 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0097835f",
+      "mask": "e0f7e3ff"
+    },
+    {
+      "asm": "esp.vsrd.32 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0093835f",
+      "mask": "e0f3e3ff"
+    },
+    {
+      "asm": "esp.vsrd.32 q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0094035f",
+      "mask": "e0f463ff"
+    },
+    {
+      "asm": "esp.vsrd.32 q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0090035f",
+      "mask": "e0f063ff"
+    },
+    {
+      "asm": "esp.vsrd.8 q0,q0,q0",
+      "class": "XESPV",
+      "match": "0087835f",
+      "mask": "e0f7e3ff"
+    },
+    {
+      "asm": "esp.vsrd.8 q0,q0,q0,sat",
+      "class": "XESPV",
+      "match": "0083835f",
+      "mask": "e0f3e3ff"
+    },
+    {
+      "asm": "esp.vsrd.8 q0,q0,q0,dyn",
+      "class": "XESPV",
+      "match": "0084035f",
+      "mask": "e0f463ff"
+    },
+    {
+      "asm": "esp.vsrd.8 q0,q0,q0,sat,dyn",
+      "class": "XESPV",
+      "match": "0080035f",
+      "mask": "e0f063ff"
+    },
+    {
+      "asm": "esp.srcq.256.st.incp q0,q0,x8",
+      "class": "XESPV",
+      "match": "0060075f",
+      "mask": "e0f07fff"
+    },
+    {
+      "asm": "esp.st.s.xacc.ip x8,0",
+      "class": "XESPV",
+      "match": "5698603f",
+      "mask": "ff98607f"
+    },
+    {
+      "asm": "esp.st.u.xacc.ip x8,0",
+      "class": "XESPV",
+      "match": "5618603f",
+      "mask": "ff98607f"
+    },
+    {
+      "asm": "esp.lp.setupi 0,0,.+4",
+      "class": "XESPLOOP",
+      "match": "0000502b",
+      "mask": "0000707f"
+    },
+    {
+      "asm": "esp.lp.setup 0,x8,.+4",
+      "class": "XESPLOOP",
+      "match": "0000402b",
+      "mask": "00007f7f"
+    },
+    {
+      "asm": "esp.lp.starti 0,.+4",
+      "class": "XESPLOOP",
+      "match": "0000002b",
+      "mask": "000fff7f"
+    },
+    {
+      "asm": "esp.lp.endi 0,.+4",
+      "class": "XESPLOOP",
+      "match": "0000102b",
+      "mask": "000fff7f"
+    },
+    {
+      "asm": "esp.lp.counti 0,0",
+      "class": "XESPLOOP",
+      "match": "0000302b",
+      "mask": "000fff7f"
+    },
+    {
+      "asm": "esp.lp.count 0,x8",
+      "class": "XESPLOOP",
+      "match": "0000202b",
+      "mask": "fff07f7f"
+    },
+    {
+      "asm": "esp.muls16ix2 x8,x8,x8,x8,0",
+      "class": "XESPDSP",
+      "match": "0000007b",
+      "mask": "0000107f"
+    },
+    {
+      "asm": "esp.muls16x2 x8,x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0000107b",
+      "mask": "0600707f"
+    },
+    {
+      "asm": "esp.muls32i x8,x8,x8,0",
+      "class": "XESPDSP",
+      "match": "0000707b",
+      "mask": "0200707f"
+    },
+    {
+      "asm": "esp.muls32 x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0000507b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.shl x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0800507b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.shr x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "1000507b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.abs x8,x8",
+      "class": "XESPDSP",
+      "match": "1800507b",
+      "mask": "fe0ff07f"
+    },
+    {
+      "asm": "esp.movr.xacc x8,x8",
+      "class": "XESPDSP",
+      "match": "2000507b",
+      "mask": "fff0707f"
+    },
+    {
+      "asm": "esp.min x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "2800507b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.max x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "3000507b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.clzs x8,x8",
+      "class": "XESPDSP",
+      "match": "3800507b",
+      "mask": "fff0707f"
+    },
+    {
+      "asm": "esp.flw.ip f8,x8,0,0",
+      "class": "XESPDSP",
+      "match": "2000307b",
+      "mask": "f800707f"
+    },
+    {
+      "asm": "esp.flw.xp f8,x8,x8",
+      "class": "XESPDSP",
+      "match": "2800307b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.fsw.ip f8,x8,0,0",
+      "class": "XESPDSP",
+      "match": "3000307b",
+      "mask": "f800707f"
+    },
+    {
+      "asm": "esp.fsw.xp f8,x8,x8",
+      "class": "XESPDSP",
+      "match": "3800307b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.lw.ip x8,x8,0,0",
+      "class": "XESPDSP",
+      "match": "4000307b",
+      "mask": "f800707f"
+    },
+    {
+      "asm": "esp.lw.xp x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "4800307b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.sw.ip x8,x8,0,0",
+      "class": "XESPDSP",
+      "match": "5000307b",
+      "mask": "f800707f"
+    },
+    {
+      "asm": "esp.sw.xp x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "5800307b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.lh.ip x8,x8,0,0",
+      "class": "XESPDSP",
+      "match": "6000307b",
+      "mask": "f800707f"
+    },
+    {
+      "asm": "esp.lh.xp x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "6800307b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.sh.ip x8,x8,0,0",
+      "class": "XESPDSP",
+      "match": "7000307b",
+      "mask": "f800707f"
+    },
+    {
+      "asm": "esp.sh.xp x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "7800307b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.lb.ip x8,x8,0,0",
+      "class": "XESPDSP",
+      "match": "8000307b",
+      "mask": "f800707f"
+    },
+    {
+      "asm": "esp.lb.xp x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "8800307b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.sb.ip x8,x8,0,0",
+      "class": "XESPDSP",
+      "match": "9000307b",
+      "mask": "f800707f"
+    },
+    {
+      "asm": "esp.sb.xp x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "9800307b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.lhu.ip x8,x8,0,0",
+      "class": "XESPDSP",
+      "match": "a000307b",
+      "mask": "f800707f"
+    },
+    {
+      "asm": "esp.lhu.xp x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "a800307b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.lbu.ip x8,x8,0,0",
+      "class": "XESPDSP",
+      "match": "c000307b",
+      "mask": "f800707f"
+    },
+    {
+      "asm": "esp.lbu.xp x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "c800307b",
+      "mask": "fe00707f"
+    },
+    {
+      "asm": "esp.movw.xacc x8,x8",
+      "class": "XESPDSP",
+      "match": "0200005b",
+      "mask": "fe007fff"
+    },
+    {
+      "asm": "esp.macs32i x8,x8,0",
+      "class": "XESPDSP",
+      "match": "0000005b",
+      "mask": "02007fff"
+    },
+    {
+      "asm": "esp.macs32 x8,x8",
+      "class": "XESPDSP",
+      "match": "0000405b",
+      "mask": "fe007fff"
+    },
+    {
+      "asm": "esp.macs32.ld x8,x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0200405b",
+      "mask": "0600707f"
+    },
+    {
+      "asm": "esp.macs32.st x8,x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0400405b",
+      "mask": "0600707f"
+    },
+    {
+      "asm": "esp.macs16ix2 x8,x8,0",
+      "class": "XESPDSP",
+      "match": "0000105b",
+      "mask": "02007fff"
+    },
+    {
+      "asm": "esp.macs16x2 x8,x8",
+      "class": "XESPDSP",
+      "match": "0000505b",
+      "mask": "fe007fff"
+    },
+    {
+      "asm": "esp.macs16x2.ld x8,x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0200505b",
+      "mask": "0600707f"
+    },
+    {
+      "asm": "esp.macs16x1.ld x8,x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0600505b",
+      "mask": "0600707f"
+    },
+    {
+      "asm": "esp.macs16x2.st x8,x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0400505b",
+      "mask": "0600707f"
+    },
+    {
+      "asm": "esp.msus32i x8,x8,0",
+      "class": "XESPDSP",
+      "match": "0000205b",
+      "mask": "02007fff"
+    },
+    {
+      "asm": "esp.msus32 x8,x8",
+      "class": "XESPDSP",
+      "match": "0000605b",
+      "mask": "fe007fff"
+    },
+    {
+      "asm": "esp.msus32.ld x8,x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0200605b",
+      "mask": "0600707f"
+    },
+    {
+      "asm": "esp.msus32.st x8,x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0400605b",
+      "mask": "0600707f"
+    },
+    {
+      "asm": "esp.msus16ix2 x8,x8,0",
+      "class": "XESPDSP",
+      "match": "0000305b",
+      "mask": "02007fff"
+    },
+    {
+      "asm": "esp.msus16x2 x8,x8",
+      "class": "XESPDSP",
+      "match": "0000705b",
+      "mask": "fe007fff"
+    },
+    {
+      "asm": "esp.msus16x2.ld x8,x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0200705b",
+      "mask": "0600707f"
+    },
+    {
+      "asm": "esp.msus16x1.ld x8,x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0600705b",
+      "mask": "0600707f"
+    },
+    {
+      "asm": "esp.msus16x2.st x8,x8,x8,x8",
+      "class": "XESPDSP",
+      "match": "0400705b",
+      "mask": "0600707f"
+    },
+    {
+      "asm": "esp.sat x8,x8,x8",
+      "class": "XESPV_AND_XESPDSP",
+      "match": "40002033",
+      "mask": "fe00707f"
+    }
+  ]
+}

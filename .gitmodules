@@ -6,4 +6,4 @@
 	url = ../xtensa-dynconfig
 [submodule "esp-toolchain-bin-wrappers"]
 	path = esp-toolchain-bin-wrappers
-	url = ../esp-toolchain-bin-wrappers
+	url = https://github.com/espressif/esp-toolchain-bin-wrappers.git

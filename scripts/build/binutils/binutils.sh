@@ -168,8 +168,17 @@ do_binutils_install_bin_wrappers () {
 
     rust_target=$(map_triplet_to_rust ${CT_HOST})
 
-    CT_Pushd "${CT_BINUTILS_ESP32P4_BIN_WRAPPERS_LOCATION}"
-    CT_DoExecLog ALL ${CT_BUILD_DIR}/rust/cargo/bin/cargo build --release \
+    # Keep the public submodule pristine; apply the bundled compatibility patch
+    # to an isolated source copy. Do not rely on an unpublished gitlink.
+    local wrapper_src="${CT_BUILD_DIR}/esp-bin-wrapper-src"
+    CT_DoExecLog ALL mkdir -p "${wrapper_src}"
+    CT_DoExecLog ALL cp -a "${CT_BINUTILS_ESP32P4_BIN_WRAPPERS_LOCATION}/." "${wrapper_src}/"
+    CT_Pushd "${wrapper_src}"
+    if ! grep -q '"xespv3p0"' main.rs; then
+        CT_DoExecLog ALL patch -p1 -i "${CT_LIB_DIR}/packages/esp-toolchain-bin-wrappers/d8844fa7/0001-xespv3p0-default.patch"
+        CT_DoExecLog ALL cp "${CT_LIB_DIR}/packages/esp-toolchain-bin-wrappers/d8844fa7/Cargo.lock" Cargo.lock
+    fi
+    CT_DoExecLog ALL ${CT_BUILD_DIR}/rust/cargo/bin/cargo build --release --locked \
         --target=${rust_target} \
         --config "target.${rust_target}.linker=\"${CT_HOST}-gcc\""
     CT_Popd

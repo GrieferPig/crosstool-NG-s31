@@ -1,0 +1,40 @@
+From: GrieferPig <grieferpig@163.com>
+Subject: [PATCH] riscv: accept Xespv 3.0 with the S31 GCC 15 port
+
+Keep the S31 HWLoop fixes and scalar musl ABI. Assembly selection is
+forwarded to the binutils wrapper; this does not add auto-vectorization.
+
+--- a/gcc/config/riscv/riscv-opts.h
++++ b/gcc/config/riscv/riscv-opts.h
+@@ -165,6 +165,7 @@
+ enum riscv_xespv_spec_class {
+   XESPV_SPEC_CLASS_2P1,
+   XESPV_SPEC_CLASS_2P2,
++  XESPV_SPEC_CLASS_3P0,
+ };
+ 
+ extern enum riscv_xespv_spec_class riscv_xespv_spec;
+--- a/gcc/config/riscv/riscv.opt
++++ b/gcc/config/riscv/riscv.opt
+@@ -709,6 +709,9 @@
+ EnumValue
+ Enum(xespv_spec_class) String(2p2) Value(XESPV_SPEC_CLASS_2P2)
+ 
++EnumValue
++Enum(xespv_spec_class) String(3p0) Value(XESPV_SPEC_CLASS_3P0)
++
+ mespv-spec=
+-Target RejectNegative Joined Enum(xespv_spec_class) Var(riscv_xespv_spec) Init(XESPV_SPEC_CLASS_2P2)
++Target RejectNegative Joined Enum(xespv_spec_class) Var(riscv_xespv_spec) Init(XESPV_SPEC_CLASS_3P0)
+ Set the version of RISC-V XESPV spec.
+--- a/gcc/common/config/riscv/riscv-common.cc
++++ b/gcc/common/config/riscv/riscv-common.cc
+@@ -442,7 +442,7 @@
+   {"xsfvqmaccdod",    ISA_SPEC_CLASS_NONE, 1, 0},
+   {"xsfvfnrclipxfqf", ISA_SPEC_CLASS_NONE, 1, 0},
+ 
+-  {"xespv", ISA_SPEC_CLASS_NONE, 2, 1},
++  {"xespv", ISA_SPEC_CLASS_NONE, 3, 0},
+   {"xesploop", ISA_SPEC_CLASS_NONE, 1, 0},
+   {"xespdsp", ISA_SPEC_CLASS_NONE, 2, 1},
+ 

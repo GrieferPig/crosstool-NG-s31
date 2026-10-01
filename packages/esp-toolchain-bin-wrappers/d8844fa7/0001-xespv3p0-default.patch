@@ -1,0 +1,110 @@
+From: GrieferPig <grieferpig@163.com>
+Subject: [PATCH] wrapper: select Xespv 3.0 and expand response files
+
+Use the public d8844fa7 wrapper rather than unavailable gitlink 11094a6.
+Handle wrapper-only selectors in nested response files before invoking gas.
+
+--- a/main.rs
++++ b/main.rs
+@@ -8,7 +8,7 @@
+ #[cfg(windows)]
+ use std::iter::once;
+ 
+-const XESPV_VERSIONS: [&str; 2] = ["xespv2p2", "xespv2p1"];
++const XESPV_VERSIONS: [&str; 3] = ["xespv3p0", "xespv2p2", "xespv2p1"];
+ const XESPV_ARG_PREFIX: &str = "-mespv-spec=";
+ const MARCH_ARG_PREFIX: &str = "-march=";
+ const ELF_MAGIC: [u8; 4] = [0x7F, b'E', b'L', b'F'];
+@@ -189,9 +189,7 @@
+ ///
+ /// # Returns
+ /// String suffix to append to the tool name
+-fn get_tool_suffix() -> String {
+-    // Skip the program name
+-    let argv: Vec<String> = env::args().skip(1).collect();
++fn get_tool_suffix(argv: &[String]) -> String {
+ 
+     // Try to get suffix from command line arguments first
+     if let Some(suffix) = parse_args_for_suffix(&argv) {
+@@ -223,7 +221,7 @@
+ 
+         esp_debug_trace!("readelf_exe_path=\"{}\"", readelf_exe_path.display());
+         /* 2. check in Tag_RISCV_arch in ELF files */
+-        for arg in &argv {
++        for arg in argv {
+             let path = Path::new(arg);
+             if !is_elf_or_static_lib(path) {
+                 continue
+@@ -298,10 +296,71 @@
+ }
+ 
+ 
++
++// libiberty-style response arguments: whitespace splits, quotes group, and a
++// backslash escapes the following character. Preserve spaces in file names.
++fn response_args(content: &str) -> Result<Vec<String>, String> {
++    let mut args = Vec::new();
++    let mut word = String::new();
++    let mut quote = None;
++    let mut escaped = false;
++    let mut started = false;
++    for c in content.chars() {
++        if escaped {
++            word.push(c);
++            escaped = false;
++        } else if c == '\\' {
++            escaped = true;
++            started = true;
++        } else if quote == Some(c) {
++            quote = None;
++        } else if quote.is_none() && (c == '\'' || c == '"') {
++            quote = Some(c);
++            started = true;
++        } else if quote.is_none() && c.is_whitespace() {
++            if started {
++                args.push(std::mem::take(&mut word));
++                started = false;
++            }
++        } else {
++            word.push(c);
++            started = true;
++        }
++    }
++    if escaped || quote.is_some() {
++        return Err("unterminated quote or escape in response file".to_string());
++    }
++    if started { args.push(word); }
++    Ok(args)
++}
++
++fn expand_response_files(args: &[String], depth: usize) -> Result<Vec<String>, String> {
++    if depth > 32 {
++        return Err("response files nest too deeply (possible cycle)".to_string());
++    }
++    let mut expanded = Vec::new();
++    for arg in args {
++        if let Some(path) = arg.strip_prefix('@') {
++            let content = std::fs::read_to_string(path)
++                .map_err(|e| format!("{}: {}", path, e))?;
++            expanded.extend(expand_response_files(&response_args(&content)?, depth + 1)?);
++        } else {
++            expanded.push(arg.clone());
++        }
++    }
++    Ok(expanded)
++}
++
+ fn main() {
+     let mut argv: Vec<String> = std::env::args().collect();
+     let (wrapper_path, is_short_path) = get_current_exe_path();
+-    let tool_suffix = get_tool_suffix();
++    let args = expand_response_files(&argv[1..], 0).unwrap_or_else(|e| {
++        eprintln!("binutils wrapper: {}", e);
++        std::process::exit(1);
++    });
++    argv.truncate(1);
++    argv.extend(args);
++    let tool_suffix = get_tool_suffix(&argv[1..]);
+ 
+     // Remove all "-mespv-spec=" arguments from argv
+     argv.retain(|arg| !arg.starts_with(XESPV_ARG_PREFIX));

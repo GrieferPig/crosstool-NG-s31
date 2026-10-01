@@ -8,6 +8,9 @@ on:
     paths:
       - .github/workflows/build-s31-linux-toolchain.yml
       - packages/**
+      - samples/riscv32-esp-linux-musl/**
+      - testing/xespv3/**
+      - .gitmodules
       - scripts/**
       - config/**
       - Makefile.in
@@ -77,8 +80,9 @@ jobs:
             -e 's|^CT_TARGET_CFLAGS=.*|CT_TARGET_CFLAGS=""|' \
             -e '/^CT_INSTALL_LICENSES=/d' \
             -e '/^# CT_INSTALL_LICENSES is not set$/d' \
-            s31linux/configs/riscv32-esp-linux-musl.config > s31-linux.config
-          printf '%s\n' '# CT_INSTALL_LICENSES is not set' >> s31-linux.config
+            samples/riscv32-esp-linux-musl/crosstool.config > s31-linux.config
+          printf '%s\n' '# CT_INSTALL_LICENSES is not set' 'CT_LINUX_SRC_CUSTOM=y' \
+            "CT_LINUX_CUSTOM_LOCATION=\"${GITHUB_WORKSPACE}/s31linux/linux-esp32-s31\"" >> s31-linux.config
           ./ct-ng defconfig DEFCONFIG="${GITHUB_WORKSPACE}/s31-linux.config"
           sed -i \
             -e 's/^CT_LOG_PROGRESS_BAR=y/# CT_LOG_PROGRESS_BAR is not set/' \
@@ -108,6 +112,8 @@ jobs:
           sha256sum \
             packages/gcc/git-0dbf5849/0001-xesploop.patch \
             packages/gcc/git-0dbf5849/0002-riscv-xesploop-reject-early-exit-loops.patch \
+            packages/gcc/git-0dbf5849/0003-riscv-xespv3p0-option.patch \
+            packages/esp-toolchain-bin-wrappers/d8844fa7/0001-xespv3p0-default.patch \
             | tee s31-patch-sha256.txt
 
       - name: Build ESP32-S31 Linux toolchain
@@ -133,6 +139,7 @@ jobs:
           done
           [[ "${rg_arch}" != *_xesploop* ]]
           [[ "${rg_arch}" != *_xespv* ]]
+          [[ "${rg_arch}" != *_d* ]]
 
           "${objdump}" -d "${libc}" > libc-disassembly.txt
           for symbol in memcpy memchr memrchr memcmp strcmp; do
@@ -141,8 +148,8 @@ jobs:
           ! grep -q 'esp\.' libc-disassembly.txt
 
           xesp_flags=(
-            -march=rv32imafbc_zicsr_zifencei_zaamo_zalrsc_zba_zbb_zbc_zbs_xesploop_xespv2p2
-            -mabi=ilp32 -mespv-spec=2p2
+            -march=rv32imafbc_zicsr_zifencei_zaamo_zalrsc_zba_zbb_zbc_zbs_xesploop_xespv3p0
+            -mabi=ilp32 -mespv-spec=3p0
           )
 
           cat > f-only-test.c <<'EOF'
@@ -152,7 +159,7 @@ jobs:
           "${gcc}" -O2 -S f-only-test.c -o f-only-test.s
           grep -q 'fadd.s' f-only-test.s
           grep -q '__adddf3' f-only-test.s
-          ! grep -Eq 'f(add|sub|mul|div)\\.d' f-only-test.s
+          ! grep -Eq 'f(add|sub|mul|div)\.d' f-only-test.s
 
           "${gcc}" "${xesp_flags[@]}" -O2 -c \
             s31linux/rootfs/s31_ext_test.S -o s31-ext-test.o
@@ -218,6 +225,9 @@ jobs:
           esac
           test "${end_opcode}" != nop
 
+      - name: Verify Xespv encodings and wrapper dispatch
+        run: python3 testing/xespv3/verify.py x-tools/riscv32-esp-linux-musl
+
       - name: Package toolchain
         run: |
           prefix="${GITHUB_WORKSPACE}/x-tools/riscv32-esp-linux-musl"
@@ -225,6 +235,7 @@ jobs:
           cp .config package-metadata/crosstool-ng.config
           cp toolchain-version.txt libc-attributes.txt f-only-test.s \
             s31-patch-sha256.txt package-metadata/
+          cp xespv3-results/summary.json package-metadata/xespv3-verification.json
           mkdir -p artifact
           tar -cJf artifact/riscv32-esp-linux-musl.tar.xz \
             -C "${prefix}" . \
@@ -267,6 +278,7 @@ jobs:
             xesploop-early-exit.s
             xesploop-single-exit.s
             xesploop-branch-end.s
+            xespv3-results/
           include-hidden-files: true
           if-no-files-found: ignore
           retention-days: 14
