@@ -201,12 +201,23 @@ do_binutils_for_host() {
         do_binutils_backend "${binutils_opts[@]}" "enable_xespv2p1=y"
         do_binutils_move_wrapped_tools rename xespv2p1
         CT_Popd
+    fi
+
+    if [ "${CT_BINUTILS_XESPV2P2}" = "y" ]; then
         CT_DoLog EXTRA "Installing binutils for host (xespv2p2)"
+        CT_mkdir_pushd "${CT_BUILD_DIR}/build-binutils-host-${CT_HOST}-xespv2p2"
+        do_binutils_backend "${binutils_opts[@]}" "enable_xespv2p2=y"
+        do_binutils_move_wrapped_tools rename xespv2p2
+        CT_Popd
+    fi
+
+    if [ "${CT_BINUTILS_XESPV2P1}" = "y" -o "${CT_BINUTILS_XESPV2P2}" = "y" ]; then
+        CT_DoLog EXTRA "Installing binutils for host (xespv3p0)"
     fi
 
     do_binutils_backend "${binutils_opts[@]}"
-    if [ "${CT_BINUTILS_XESPV2P1}" = "y" ]; then
-        do_binutils_move_wrapped_tools rename xespv2p2
+    if [ "${CT_BINUTILS_XESPV2P1}" = "y" -o "${CT_BINUTILS_XESPV2P2}" = "y" ]; then
+        do_binutils_move_wrapped_tools rename xespv3p0
         do_binutils_install_bin_wrappers
     fi
 
@@ -261,6 +272,7 @@ do_binutils_backend() {
     local ldflags
     local build_manuals=no
     local enable_xespv2p1=no
+    local enable_xespv2p2=no
     local -a extra_config
     local -a extra_make_flags
     local -a manuals_for
@@ -340,6 +352,9 @@ do_binutils_backend() {
     fi
     if [ "${enable_xespv2p1}" = "y" ]; then
         extra_config+=("--enable-xespv2p1")
+    fi
+    if [ "${enable_xespv2p2}" = "y" ]; then
+        extra_config+=("--enable-xespv2p2")
     fi
 
     CT_DoLog DEBUG "Extra config passed: '${extra_config[*]}'"

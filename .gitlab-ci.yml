@@ -109,7 +109,7 @@ before_script:
 # Actual build
 .build_toolchain: &build_toolchain |
   ./ct-ng upgradeconfig
-  ./ct-ng build
+  ./ct-ng build.32
 
 .add_extra_files: &add_extra_files |
   if [ "${EXTRA_BINS:-}" ]; then
@@ -149,8 +149,8 @@ before_script:
     rm -rf "${CONF_TARGET}/debug-sections"
     echo "${DEBUG_ARCHIVE_NAME}" >> ../dist/dist_name_${CONF_TARGET}-debug-sections
   fi
-  rm -rf "${CONF_TARGET}/bin/*esp8266*" # esp8266 is not a default target for toolchain
-  ESP8266_ARCHIVE_FILES="$(find "${CONF_TARGET}" -name "*esp8266*" -print)"
+  rm -rf ${CONF_TARGET}/bin/*esp8266* # esp8266 is not a default target for toolchain
+  ESP8266_ARCHIVE_FILES="$(find "${CONF_TARGET}" -name "*esp8266*" ! -name "xtensa_esp8266.so" -print)"
   if [ -n "${ESP8266_ARCHIVE_FILES}" ]; then
     if [ "${PLATFORM_NAME}" = "x86_64-linux-gnu" ]; then
       ESP8266_ARCHIVE_NAME="${CONF_TARGET}-${DIST_VERSION_SHORT}-esp8266-multilib.${ARCHIVE_EXT}"
@@ -173,7 +173,7 @@ before_script:
 .build_template:
   stage: build
   allow_failure: true
-  tags: [ "build", "amd64" ]
+  tags: [ "build", "amd64", "nocaps" ]
   variables:
     # Do not compress artifacts because we already use compressed archives
     ARTIFACT_COMPRESSION_LEVEL: "fastest"
@@ -653,8 +653,8 @@ generate_version:
     # Save the download link for the checksum file
     - echo ""
     - echo "Save checksum file link to toolchain_sha256.env:"
-    - echo "TOOL_SHA256_URL=${S3_PUBLIC_DIR}/${SHA256_FILE}" > toolchain_sha256.env
-    - cat toolchain_sha256.env
+    - echo "TOOL_SHA256_URL=${S3_PUBLIC_DIR}/${SHA256_FILE}" > ${CI_PROJECT_DIR}/toolchain_sha256.env
+    - cat ${CI_PROJECT_DIR}/toolchain_sha256.env
     - echo ""
 
 upload_all_to_dl_s3:
@@ -671,6 +671,9 @@ upload_to_github:
   tags: [ "build", "amd64", "brew" ]
   <<: *needs_all_distros
   allow_failure: true
+  artifacts:
+    reports:
+      dotenv: toolchain_sha256.env
   rules:
     - if: $CI_COMMIT_TAG
       when: manual
@@ -723,8 +726,8 @@ upload_to_github:
     # Save the download link for the checksum file
     - echo ""
     - echo "Save checksum file link to toolchain_sha256.env:"
-    - echo "TOOL_SHA256_URL=${GH_REPO_URL}/releases/download/${CI_COMMIT_TAG}/${CI_PROJECT_NAME}-${DIST_VERSION_FULL}-checksum.sha256" > toolchain_sha256.env
-    - cat toolchain_sha256.env
+    - echo "TOOL_SHA256_URL=${GH_REPO_URL}/releases/download/${CI_COMMIT_TAG}/${CI_PROJECT_NAME}-${DIST_VERSION_FULL}-checksum.sha256" > ${CI_PROJECT_DIR}/toolchain_sha256.env
+    - cat ${CI_PROJECT_DIR}/toolchain_sha256.env
     - echo ""
 
 .update_idf_tools:
