@@ -1,0 +1,2 @@
+reporter_name="ESP32-P4 rev1.3 Linux profile"
+reporter_comment="RV32IMAC, ILP32, XEspV 2.1, NOMMU uClibc-ng and bFLT; not for P4 rev3."

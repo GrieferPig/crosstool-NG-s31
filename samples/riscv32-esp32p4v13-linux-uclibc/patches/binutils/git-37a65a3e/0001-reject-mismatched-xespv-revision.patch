@@ -1,0 +1,48 @@
+Subject: [PATCH] riscv: reject mismatched PIE encodings in P4 rev1.3 profile
+
+Selected only in the single-backend ESP32-P4 rev1.3 toolchain sample.
+Gas accepting -march=..._xespv3p0 with the espv2p1 instruction tables
+otherwise emits 2.1 instructions while advertising 3.0 in the ELF.
+Check the parsed versions for command-line, linked-object attributes and
+.option arch, including updates of an already enabled extension.
+
+--- a/bfd/elfxx-riscv.c
++++ b/bfd/elfxx-riscv.c
+@@ -2486,6 +2486,17 @@
+   int xlen = *rps->xlen;
+   bool no_conflict = true;
+ 
++  /* This board-profile backend can only emit the pre-v3 P4 PIE encoding.
++     Never stamp its instruction bytes as a different extension version.  */
++  if (riscv_lookup_subset (rps->subset_list, "xespv", &subset)
++      && (subset->major_version != 2 || subset->minor_version != 1))
++    {
++      rps->error_handler
++        (_("ESP32-P4 rev1.3 toolchain requires xespv2p1, not xespv%dp%d"),
++         subset->major_version, subset->minor_version);
++      no_conflict = false;
++    }
++
+   if (riscv_subset_supports (rps, "e")
+       && riscv_subset_supports (rps, "h"))
+     {
+@@ -3009,6 +3020,19 @@
+ 	      return false;
+ 	    }
+ 	}
++
++      /* Reject a conflicting .option arch,+xespv... even if the extension
++         was already enabled and the normal update would silently ignore it.  */
++      if (!removed && strcmp (subset, "xespv") == 0
++          && find_any_version
++          && (major_version != 2 || minor_version != 1))
++        {
++          rps->error_handler
++            (_("ESP32-P4 rev1.3 toolchain requires xespv2p1, not xespv%dp%d"),
++             major_version, minor_version);
++          free (subset);
++          return false;
++        }
+ 
+       if (removed)
+ 	riscv_remove_subset (rps->subset_list, subset);

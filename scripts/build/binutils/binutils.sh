@@ -489,7 +489,10 @@ do_elf2flt_backend() {
         "${CT_ELF2FLT_EXTRA_CONFIG_ARRAY[@]}"
 
     CT_DoLog EXTRA "Building elf2flt"
-    CT_DoExecLog ALL make ${CT_JOBSFLAGS} CPU=${CT_ARCH}
+    # elf2flt dispatches on TARGET_riscv32 / TARGET_riscv64, not TARGET_riscv.
+    local elf2flt_cpu="${CT_ARCH}"
+    [ "${CT_ARCH}" != riscv ] || elf2flt_cpu="riscv${CT_ARCH_BITNESS}"
+    CT_DoExecLog ALL make ${CT_JOBSFLAGS} CPU="${elf2flt_cpu}"
 
     CT_DoLog EXTRA "Installing elf2flt"
     CT_DoExecLog ALL make install
