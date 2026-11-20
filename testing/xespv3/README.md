@@ -79,6 +79,13 @@ in 3.0 and accepted in the compatibility 2.2 assembler.
 
 This is complete coverage of the **published opcode-table forms**, using one
 legal operand example per row. It is not exhaustive testing of operand values
-or instruction behavior on hardware. It does not change S31 Linux/OpenSBI
-context handling or rewrite the old `.word` constants in that port; those must
-be re-encoded separately before using a 3.0 image on a board.
+or instruction behavior on hardware. It does not change S31 Linux/OpenSBI context handling. The pinned board
+[OpenSBI save/restore routine](https://github.com/GrieferPig/opensbi-esp32-s31/blob/c8d6e92c70e9679b9e8d1a4ab95acd13ea04b5b5/platform/generic/espressif/esp32s31_coproc.S)
+skips PIE on hart 0 and embeds old instruction words on hart 1. For example,
+it saves `esp.movx.r.sar.bytes a1` as `0x88c0219b` (2.2); assembling
+the same operands for 3.0 gives `0x4e4861bf`. The board's
+[existing SIMD library](https://github.com/GrieferPig/esp32-s31-linux/blob/7b36565d02662436d2cc041dd40a24d65a06a18d/buildroot-external/package/esp-simd/esp-simd.mk)
+explicitly requests 2.2; its initialization binds the calling thread to CPU1.
+An ELF 3.0 tag or successful scalar Linux boot does **not** validate 3.0
+execution/preemption. Qualify OS state preservation and silicon separately
+before deploying code that actually executes these instructions.

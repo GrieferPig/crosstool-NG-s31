@@ -136,6 +136,16 @@ if not opts.binutils_only:
         run('gcc-'+name, [tools['gcc'], *extra, '-c', probe, '-o', obj])
         assert text_bytes('gcc-'+name, obj) == golden
         attributes('gcc-'+name, obj, '3p0')
+    generic_source = out/'plain-c-loop.c'
+    generic_source.write_text('void add32(unsigned *restrict d, const unsigned *restrict a, '
+                              'const unsigned *restrict b) { for (int i=0;i<128;i++) '
+                              'd[i]=a[i]+b[i]; }\n')
+    generic_obj = out/'plain-c-loop.o'
+    run('no-isa-flags-plain-c', [tools['gcc'], '-O3', '-ftree-vectorize', '-c',
+                                 generic_source, '-o', generic_obj])
+    generic_dis = run('no-isa-flags-plain-c-disasm', [tools['objdump'], '-d', generic_obj])
+    assert not re.search(r'\besp\.', generic_dis), generic_dis
+    attributes('no-isa-flags-plain-c', generic_obj, '3p0')
     # An explicit scalar caller can still opt out of the instruction class.
     run('gcc-scalar-rejects-simd', [tools['gcc'], '-march=rv32imafc_zicsr_zifencei',
                                     '-c', probe, '-o', out/'scalar.o'], success=False)
