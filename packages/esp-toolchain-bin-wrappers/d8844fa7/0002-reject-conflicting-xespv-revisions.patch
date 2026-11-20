@@ -1,0 +1,49 @@
+Subject: [PATCH] wrapper: reject contradictory explicit ISA/backend revisions
+
+--- a/main.rs
++++ b/main.rs
+@@ -351,10 +351,44 @@
+     Ok(expanded)
+ }
+ 
++// A backend selector and a versioned ISA tag describe the same bytes.
++// Reject disagreement before GNU as can emit a falsely labelled object.
++fn validate_xespv_revision(argv: &[String]) -> Result<(), String> {
++    let mut march = None;
++    let mut spec = None;
++    for arg in argv {
++        if let Some(isa) = arg.strip_prefix(MARCH_ARG_PREFIX) {
++            march = Some(isa);
++        }
++        if let Some(value) = arg.strip_prefix(XESPV_ARG_PREFIX) {
++            spec = Some(value);
++        }
++    }
++    if let (Some(isa), Some(selected)) = (march, spec) {
++        for ext in isa.split('_') {
++            if let Some(version) = ext.strip_prefix("xespv") {
++                // Bare xespv intentionally defers to the selected backend.
++                if !version.starts_with(|c: char| c.is_ascii_digit()) {
++                    continue;
++                }
++                let (major, minor) = version.split_once('p').unwrap_or((version, "0"));
++                if format!("{}p{}", major, minor) != selected {
++                    return Err(format!("conflicting XEspV revisions: -march={} versus -mespv-spec={}", isa, selected));
++                }
++            }
++        }
++    }
++    Ok(())
++}
++
+ fn main() {
+     let mut argv: Vec<String> = std::env::args().collect();
+     let (wrapper_path, is_short_path) = get_current_exe_path();
+     let args = expand_response_files(&argv[1..], 0).unwrap_or_else(|e| {
++        eprintln!("binutils wrapper: {}", e);
++        std::process::exit(1);
++    });
++    validate_xespv_revision(&args).unwrap_or_else(|e| {
+         eprintln!("binutils wrapper: {}", e);
+         std::process::exit(1);
+     });

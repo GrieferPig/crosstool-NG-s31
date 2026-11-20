@@ -228,7 +228,9 @@ jobs:
           test "${end_opcode}" != nop
 
       - name: Verify Xespv encodings and wrapper dispatch
-        run: python3 testing/xespv3/verify.py x-tools/riscv32-esp-linux-musl
+        run: |
+          python3 testing/xespv3/verify.py x-tools/riscv32-esp-linux-musl
+          python3 testing/xespv3/verify-selectors.py x-tools/riscv32-esp-linux-musl
 
       - name: Package toolchain
         run: |

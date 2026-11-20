@@ -178,6 +178,9 @@ do_binutils_install_bin_wrappers () {
         CT_DoExecLog ALL patch -p1 -i "${CT_LIB_DIR}/packages/esp-toolchain-bin-wrappers/d8844fa7/0001-xespv3p0-default.patch"
         CT_DoExecLog ALL cp "${CT_LIB_DIR}/packages/esp-toolchain-bin-wrappers/d8844fa7/Cargo.lock" Cargo.lock
     fi
+    if [ "${CT_TARGET}" = "riscv32-esp-linux-musl" ] && ! grep -q "fn validate_xespv_revision" main.rs; then
+        CT_DoExecLog ALL patch -p1 -i "${CT_LIB_DIR}/packages/esp-toolchain-bin-wrappers/d8844fa7/0002-reject-conflicting-xespv-revisions.patch"
+    fi
     CT_DoExecLog ALL ${CT_BUILD_DIR}/rust/cargo/bin/cargo build --release --locked \
         --target=${rust_target} \
         --config "target.${rust_target}.linker=\"${CT_HOST}-gcc\""

@@ -89,3 +89,11 @@ explicitly requests 2.2; its initialization binds the calling thread to CPU1.
 An ELF 3.0 tag or successful scalar Linux boot does **not** validate 3.0
 execution/preemption. Qualify OS state preservation and silicon separately
 before deploying code that actually executes these instructions.
+
+The public S31 wrapper rejects a versioned `-march=..._xespv2p2` combined
+with a contradictory `-mespv-spec=3p0`, in either argument order and inside
+response files. Bare `xespv` in direct GAS still accepts a matching backend
+selector. Run `python3 testing/xespv3/verify-selectors.py /path/to/sdk` to
+check rejected combinations and verify the emitted word plus ELF tag for
+valid ones. This check applies to the public wrapper, not direct internal
+backend executables or ISA changes inside handwritten assembly.
