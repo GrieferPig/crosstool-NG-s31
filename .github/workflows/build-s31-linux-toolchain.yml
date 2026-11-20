@@ -76,7 +76,6 @@ jobs:
             -e "s|^CT_LOCAL_PATCH_DIR=.*|CT_LOCAL_PATCH_DIR=\"${GITHUB_WORKSPACE}/s31linux/toolchain-patches\"|" \
             -e "s|^CT_LINUX_CUSTOM_LOCATION=.*|CT_LINUX_CUSTOM_LOCATION=\"${GITHUB_WORKSPACE}/s31linux/linux-esp32-s31\"|" \
             -e "s|^CT_BINUTILS_ESP32P4_BIN_WRAPPERS_LOCATION=.*|CT_BINUTILS_ESP32P4_BIN_WRAPPERS_LOCATION=\"${GITHUB_WORKSPACE}/esp-toolchain-bin-wrappers/gnu-riscv-binutils\"|" \
-            -e 's|^CT_ARCH_ARCH=.*|CT_ARCH_ARCH="rv32imafbc_zicsr_zifencei_zaamo_zalrsc_zba_zbb_zbc_zbs"|' \
             -e 's|^CT_TARGET_CFLAGS=.*|CT_TARGET_CFLAGS=""|' \
             -e '/^CT_INSTALL_LICENSES=/d' \
             -e '/^# CT_INSTALL_LICENSES is not set$/d' \
@@ -88,7 +87,7 @@ jobs:
             -e 's/^CT_LOG_PROGRESS_BAR=y/# CT_LOG_PROGRESS_BAR is not set/' \
             -e "s|^CT_LOCAL_TARBALLS_DIR=.*|CT_LOCAL_TARBALLS_DIR=\"${GITHUB_WORKSPACE}/src\"|" \
             .config
-          grep -q '^CT_ARCH_ARCH="rv32imafbc_zicsr_zifencei_zaamo_zalrsc_zba_zbb_zbc_zbs"$' .config
+          grep -q '^CT_ARCH_ARCH="rv32imafbc_zicsr_zifencei_zaamo_zalrsc_zba_zbb_zbc_zbs_xespv3p0"$' .config
           grep -q '^CT_TARGET_CFLAGS=""$' .config
           grep -q '^# CT_INSTALL_LICENSES is not set$' .config
 
@@ -138,14 +137,17 @@ jobs:
             [[ "${rg_arch}" == *"${extension}"* ]]
           done
           [[ "${rg_arch}" != *_xesploop* ]]
-          [[ "${rg_arch}" != *_xespv* ]]
+          [[ "_${rg_arch}_" == *_xespv3p0_* ]]
           [[ "${rg_arch}" != *_d* ]]
 
           "${objdump}" -d "${libc}" > libc-disassembly.txt
           for symbol in memcpy memchr memrchr memcmp strcmp; do
             grep -q "<${symbol}>:" libc-disassembly.txt
           done
-          ! grep -q 'esp\.' libc-disassembly.txt
+          if grep -q 'esp\.' libc-disassembly.txt; then
+            echo 'Unexpected vendor instruction in generic musl' >&2
+            exit 1
+          fi
 
           xesp_flags=(
             -march=rv32imafbc_zicsr_zifencei_zaamo_zalrsc_zba_zbb_zbc_zbs_xesploop_xespv3p0

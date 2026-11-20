@@ -124,6 +124,21 @@ for mnemonic in ('esp.addx2', 'esp.addx4', 'esp.subx2', 'esp.subx4'):
 if not opts.binutils_only:
     empty = out/'empty.c'
     empty.write_text('')
+    # No ISA, spec or ABI selectors: test the installed S31 driver defaults,
+    # not just GAS accepting a versioned ELF attribute with an old opcode map.
+    default_macros = run('gcc-unflagged-macros', [tools['gcc'], '-dM', '-E', empty])
+    assert re.search(r'^#define __riscv_xespv 3000000$', default_macros, re.M)
+    assert re.search(r'^#define __riscv_float_abi_soft 1$', default_macros, re.M)
+    assert re.search(r'^#define __riscv_flen 32$', default_macros, re.M)
+    for name, extra in [('unflagged', []),
+                        ('short-v3', ['-march=rv32imafc_zicsr_zifencei_xespv3'])]:
+        obj = out/('gcc-'+name+'.o')
+        run('gcc-'+name, [tools['gcc'], *extra, '-c', probe, '-o', obj])
+        assert text_bytes('gcc-'+name, obj) == golden
+        attributes('gcc-'+name, obj, '3p0')
+    # An explicit scalar caller can still opt out of the instruction class.
+    run('gcc-scalar-rejects-simd', [tools['gcc'], '-march=rv32imafc_zicsr_zifencei',
+                                    '-c', probe, '-o', out/'scalar.o'], success=False)
     for version in ('2p1', '2p2', '3p0'):
         obj = out/('gcc-'+version+'.o')
         run('gcc-'+version, [tools['gcc'], '-march='+arch+version, '-mespv-spec='+version, '-mabi=ilp32', '-c', probe, '-o', obj])

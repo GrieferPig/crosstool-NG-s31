@@ -7,7 +7,7 @@ The Linux sample uses the merged Espressif `esp-1.28.x` build scripts with:
 * the S31 GCC 15 source `0dbf584943ac179894690b389f3a37926bb4cd33`, preserving
   both existing HWLoop patches and adding the `-mespv-spec=3p0` option and
   unversioned Xespv 3.0 default;
-* scalar musl 1.2.5 and the original F-only `ilp32` ABI;
+* musl 1.2.5 with scalar implementations, F-only hardware and soft-float `ilp32` calling convention;
 * separate assembler/disassembler variants for Xespv 2.1, 2.2 and 3.0.
 
 The upstream ct-ng wrapper gitlink `11094a6eb2b2e7893747faac49012d0e9fb76921`
@@ -32,8 +32,15 @@ python3 testing/xespv3/verify.py x-tools/riscv32-esp-linux-musl
 
 The portable sample downloads Linux 6.12 headers. The S31 workflow overrides
 this with its checked-out S31 kernel. Choose a new `CT_PREFIX_DIR` when testing
-beside an installed toolchain. The default target architecture remains scalar;
-enable SIMD explicitly in code that implements the required context policy:
+beside an installed toolchain. The S31 default ISA now includes XEspV 3.0:
+a plain compiler invocation accepts hand-written SIMD and stamps the ELF with
+`_xespv3p0`. Plain C is not auto-vectorized into this vendor ISA, and the musl
+build must remain free of vendor instructions. An explicit scalar `-march`
+still opts out; existing downstream flags are not overridden. This default
+makes assembly available, **not** safe to execute on any hart or across context
+switches. Code that uses vector registers must follow the OS context policy.
+
+An explicit equivalent for assembling SIMD is:
 
 ```sh
 riscv32-esp-linux-musl-gcc -march=rv32imafc_zicsr_zifencei_xespv3p0 \
@@ -64,7 +71,7 @@ link and a C++ runtime link with inline SIMD assembly. The workflow additionally
 checks scalar libc, F-only code generation and HWLoop control-flow regressions.
 Raw commands, outputs and `summary.json` go to `xespv3-results/`.
 
-The complete S31 Linux C/C++ toolchain was built and these checks passed on
+The earlier, scalar-default S31 Linux C/C++ toolchain was built and its then-current checks passed on
 2026-09-30 with an x86_64 Ubuntu 24.04 WSL host. Scalar musl, F-only code
 generation, early-exit/branch-end HWLoop rejection and simple HWLoop generation
 also passed. The four removed `addx2/addx4/subx2/subx4` mnemonics were rejected
