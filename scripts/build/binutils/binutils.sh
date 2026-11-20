@@ -366,6 +366,17 @@ do_binutils_backend() {
         extra_config+=("--enable-xespv2p2")
     fi
 
+    # GCC gets CT_ARCH_ARCH, but GAS normally falls back to its generic ISA.
+    # Keep the S31 public assembler and each named compatibility backend
+    # consistent with the instruction table actually compiled into it.
+    if [[ "${CT_TARGET}" == riscv32-esp-linux-musl &&
+          "_${CT_ARCH_ARCH}_" == *_xespv3p0_* ]]; then
+        local as_spec=3p0
+        if [[ "${enable_xespv2p1}" == y ]]; then as_spec=2p1; fi
+        if [[ "${enable_xespv2p2}" == y ]]; then as_spec=2p2; fi
+        extra_config+=("--with-arch=${CT_ARCH_ARCH/_xespv3p0/_xespv${as_spec}}")
+    fi
+
     CT_DoLog DEBUG "Extra config passed: '${extra_config[*]}'"
 
     CT_DoExecLog CFG                                            \

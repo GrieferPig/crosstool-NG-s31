@@ -50,6 +50,10 @@ for version in ('2p1', '2p2', '3p0'):
     obj = out/('direct-'+version+'.o')
     run('direct-'+version, [direct, '-march='+arch+version, '-mabi=ilp32', probe, '-o', obj])
     expected = text_bytes('direct-'+version, obj)
+    noflags_direct = out/('direct-unflagged-'+version+'.o')
+    run('direct-unflagged-'+version, [direct, probe, '-o', noflags_direct])
+    assert text_bytes('direct-unflagged-'+version, noflags_direct) == expected
+    attributes('direct-unflagged-'+version, noflags_direct, version)
     if version == '3p0': assert expected == golden, expected.hex()
     if version == '2p2': assert expected[:4].hex() == '1f001103'
     attributes('direct-'+version, obj, version)
@@ -71,6 +75,13 @@ for version in ('2p1', '2p2', '3p0'):
         attributes(label, assembled, version)
         dis = run(label+'-objdump', [tools['objdump'], '-d', assembled])
         assert 'esp.vld.128.ip' in dis and 'esp.vcmp.eq.u8' in dis, dis
+
+# A literal no-flags invocation of the public GAS wrapper is also a 3.0 tool.
+obj = out/'as-unflagged.o'
+run('as-unflagged', [tools['as'], probe, '-o', obj])
+assert text_bytes('as-unflagged', obj) == golden
+attributes('as-unflagged', obj, '3p0')
+assert 'soft-float ABI' in run('as-unflagged-abi', [tools['readelf'], '-h', obj])
 
 # Default dispatch and unversioned Xespv must really generate 3.0.
 obj = out/'default.o'
